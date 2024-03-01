@@ -1,0 +1,42 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/static/script.js"></script>
+    <title>Add YouTube Video</title>
+  </head>
+  <body>
+    <input type="text" id="videoUrl" placeholder="Enter YouTube Video URL" />
+    <button onclick="addVideo()">Add Video</button>
+    <button onclick="addVideo()">Download audio</button>
+
+    <div id="videoContainer"></div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+</head>
+<body>
+    <h1>YouTube Video Downloader</h1>
+    <form action="/add_video" method="post">
+        <label for="videoUrl">Enter YouTube Video URL:</label><br>
+        <input type="text" id="videoUrl" name="videoUrl"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="videoContainer"></div>
+
+    <!-- <script>
+        // Function to display embedded video
+        function displayEmbeddedVideo(embedCode) {
+            var videoContainer = document.getElementById("videoContainer");
+            videoContainer.innerHTML = embedCode;
+        }
+    </script> -->
+</body>
+</html>
