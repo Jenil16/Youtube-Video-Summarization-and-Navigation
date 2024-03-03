@@ -1,0 +1,1164 @@
+1
+00:00:00,170 --> 00:00:03,886
+Ever wondered about the differences between AI, ML, DL and
+
+2
+00:00:03,908 --> 00:00:07,594
+ds? Well, we're about to explore all of those today. Stay tuned.
+
+3
+00:00:07,642 --> 00:00:11,162
+So let's dive right into it. So AI versus ML versus
+
+4
+00:00:11,226 --> 00:00:14,842
+DL versus DS, a whole bunch of jargon, but we're going to clarify
+
+5
+00:00:14,986 --> 00:00:18,366
+all of that right up. So let's kick things off and take a look at
+
+6
+00:00:18,388 --> 00:00:22,014
+AI. So AI is really to do with
+
+7
+00:00:22,052 --> 00:00:26,562
+the ability of computers and machines to perform tasks without explicitly
+
+8
+00:00:26,626 --> 00:00:29,906
+programming them, otherwise known as the ability for computers
+
+9
+00:00:29,938 --> 00:00:33,234
+and machines to think by themselves. So we typically
+
+10
+00:00:33,282 --> 00:00:37,282
+break out AI into two key categories. These are general AI
+
+11
+00:00:37,346 --> 00:00:41,202
+and narrow AI. General AI typically refers to the ability
+
+12
+00:00:41,266 --> 00:00:44,874
+for a computer or a machine to be able to handle a wide variety of
+
+13
+00:00:44,912 --> 00:00:48,246
+tasks. Us as humans have the ability to do a whole heap
+
+14
+00:00:48,278 --> 00:00:51,610
+of stuff. We can see, we can speak, we can hear, we can read,
+
+15
+00:00:51,680 --> 00:00:55,642
+we can drive, we can do a whole range of things. The ability for AI
+
+16
+00:00:55,706 --> 00:00:59,434
+and machines to be able to do a broad range of tasks similar to humans
+
+17
+00:00:59,482 --> 00:01:02,826
+is what we typically refer to as general AI.
+
+18
+00:01:02,938 --> 00:01:06,474
+Now, we're still a little bit of a while away from true general AI,
+
+19
+00:01:06,522 --> 00:01:09,298
+but that's not to say it's not to come. Now,
+
+20
+00:01:09,384 --> 00:01:13,266
+narrow AI, on the other hand, is the ability for a machine to handle a
+
+21
+00:01:13,288 --> 00:01:17,266
+really simple or a really narrow range of tasks. So that could possibly be the
+
+22
+00:01:17,288 --> 00:01:21,174
+ability to translate speech to text, or to classify images as having
+
+23
+00:01:21,212 --> 00:01:24,982
+different categories, or the ability to predict house prices, for example.
+
+24
+00:01:25,116 --> 00:01:28,486
+All of these are examples of narrow AI. So I'm going
+
+25
+00:01:28,508 --> 00:01:31,626
+to be painting a bunch of visual imagery to help you remember some of these
+
+26
+00:01:31,648 --> 00:01:34,966
+topics. So the first one, in terms of breaking out general and narrow
+
+27
+00:01:34,998 --> 00:01:38,054
+AI, or the ability to remember general and narrow AI,
+
+28
+00:01:38,182 --> 00:01:41,834
+is just picture a really narrow or really skinny general in your mind.
+
+29
+00:01:41,872 --> 00:01:46,010
+So that way you know that there's two different types of AI, general and narrow.
+
+30
+00:01:46,090 --> 00:01:49,454
+Now onto the next topic, machine learning. So we've taken a look at AI as
+
+31
+00:01:49,492 --> 00:01:53,294
+being broken up into general and narrow. But how does machine learning fit into this?
+
+32
+00:01:53,412 --> 00:01:56,734
+Well, machine learning is the application of narrow AI
+
+33
+00:01:56,782 --> 00:02:00,402
+to specific tasks. Now, when we typically talk about machine learning,
+
+34
+00:02:00,456 --> 00:02:03,886
+we often compare it to traditional programming. So in traditional programming,
+
+35
+00:02:03,918 --> 00:02:08,078
+we supply data plus rules or conditional logic, and we get answers.
+
+36
+00:02:08,174 --> 00:02:12,322
+Now, in machine learning, on the other hand, we provide data plus historical
+
+37
+00:02:12,386 --> 00:02:16,322
+answers to get rules. We can then pass new data to get new answers.
+
+38
+00:02:16,386 --> 00:02:19,766
+So this is a bit of a change in the paradigm of how computer scientists
+
+39
+00:02:19,798 --> 00:02:23,002
+and machine learning engineers are building programs these days.
+
+40
+00:02:23,136 --> 00:02:26,314
+So what are some typical machine learning tasks? Well,
+
+41
+00:02:26,432 --> 00:02:30,278
+we broadly break out machine learning into three key categories.
+
+42
+00:02:30,374 --> 00:02:34,266
+These are supervised learning, unsupervised learning, and semisupervised
+
+43
+00:02:34,298 --> 00:02:37,134
+learning. So let's take a look at supervised learning first. So,
+
+44
+00:02:37,172 --> 00:02:40,778
+supervised learning can be broadly broken out into two key categories.
+
+45
+00:02:40,874 --> 00:02:44,606
+These are classification and regression. Classification is all
+
+46
+00:02:44,628 --> 00:02:48,030
+to do with grouping things into categories or labels.
+
+47
+00:02:48,110 --> 00:02:51,454
+So say you had a big data set on all the different types of pizzas
+
+48
+00:02:51,502 --> 00:02:54,354
+you've liked and whether or not you've liked them. Yes or no,
+
+49
+00:02:54,472 --> 00:02:58,190
+you could take that data and pass it through to a classification algorithm
+
+50
+00:02:58,270 --> 00:03:01,446
+to help it learn which types of pizzas you like. So then when you pass
+
+51
+00:03:01,468 --> 00:03:04,966
+through a new list of ingredients, it would be able to predict, yes, you would
+
+52
+00:03:04,988 --> 00:03:08,198
+like that pizza or no, you might not. Regression, on the
+
+53
+00:03:08,204 --> 00:03:11,834
+other hand, is all to do with predicting continuous variables. Some great
+
+54
+00:03:11,872 --> 00:03:15,366
+examples of regression are sales forecasting and predicting prices
+
+55
+00:03:15,398 --> 00:03:19,094
+of houses. So that encapsulates supervised learning. Now, what about unsupervised
+
+56
+00:03:19,142 --> 00:03:22,678
+learning? Well, there's two key things to think about when you think
+
+57
+00:03:22,704 --> 00:03:26,654
+of unsupervised learning. These are really clustering. So the ability to
+
+58
+00:03:26,692 --> 00:03:30,826
+group people together. So say you wanted to group together high performing and low performing
+
+59
+00:03:30,858 --> 00:03:34,270
+and medium performing employees, or high value, low value,
+
+60
+00:03:34,340 --> 00:03:37,938
+medium value customers, or a whole bunch of other different types of data.
+
+61
+00:03:38,024 --> 00:03:41,854
+But really it's all to do with grouping things together. Now, dimensionality reduction,
+
+62
+00:03:41,902 --> 00:03:45,826
+on the other hand, is all to do with condensing the features that
+
+63
+00:03:45,848 --> 00:03:49,042
+you've got within a machine learning model. So a lot of the time you might
+
+64
+00:03:49,096 --> 00:03:52,438
+start out with a huge data set with a lot of columns, and you're not
+
+65
+00:03:52,444 --> 00:03:55,638
+really sure which of those columns are important for your machine learning model,
+
+66
+00:03:55,724 --> 00:03:59,246
+dimensionality reduction helps you reduce the number of columns
+
+67
+00:03:59,298 --> 00:04:02,730
+that you've got so that you can really focus on the important ones.
+
+68
+00:04:02,880 --> 00:04:06,374
+Now, in order to remember supervised learning and unsupervised
+
+69
+00:04:06,422 --> 00:04:10,534
+learning, I'd suggest you remember this initialism, Christopher Robin
+
+70
+00:04:10,582 --> 00:04:13,210
+caught a duck. So that way you remember classification,
+
+71
+00:04:13,370 --> 00:04:16,846
+regression, clustering and dimensionality reduction. So that
+
+72
+00:04:16,868 --> 00:04:20,714
+takes care of supervised and unsupervised learning. But what about semi supervised
+
+73
+00:04:20,762 --> 00:04:23,982
+learning? Well, this is where reinforcement learning comes in.
+
+74
+00:04:24,036 --> 00:04:27,442
+Now, reinforcement learning has four key things. These are
+
+75
+00:04:27,496 --> 00:04:30,798
+an agent, an action, an environment, and a reward.
+
+76
+00:04:30,894 --> 00:04:34,514
+It's similar to how you might choose to condition a dog. A dog
+
+77
+00:04:34,552 --> 00:04:38,246
+might do something right, and you might reward it with a piece of food.
+
+78
+00:04:38,348 --> 00:04:42,358
+In a similar way, we train reinforcement learning models to act in a
+
+79
+00:04:42,364 --> 00:04:46,710
+correct way in a given environment in order to learn appropriate actions given
+
+80
+00:04:46,780 --> 00:04:49,478
+that specific environment. Now, the best way to remember,
+
+81
+00:04:49,564 --> 00:04:53,482
+reinforcement learning techniques is to remember area 51.
+
+82
+00:04:53,536 --> 00:04:57,126
+So that way you remember agent reward environment and actions.
+
+83
+00:04:57,238 --> 00:05:00,426
+Okay? So that takes care of machine learning. Now we're going to delve a little
+
+84
+00:05:00,448 --> 00:05:04,046
+bit deeper and get into deep learning. So deep learning is a
+
+85
+00:05:04,068 --> 00:05:07,626
+subset of machine learning, and really it's to do with performing machine
+
+86
+00:05:07,658 --> 00:05:10,746
+learning tasks using deep neural networks.
+
+87
+00:05:10,858 --> 00:05:14,266
+Now, deep neural networks are networks that have multiple hidden
+
+88
+00:05:14,298 --> 00:05:17,426
+layers. So if you've ever seen a diagram that looks sort of
+
+89
+00:05:17,448 --> 00:05:21,278
+like this, this is a representation of a neural network.
+
+90
+00:05:21,374 --> 00:05:24,834
+But specifically in this case, this is a deep neural network because
+
+91
+00:05:24,872 --> 00:05:28,210
+it has multiple hidden layers. Now, the best way to remember
+
+92
+00:05:28,280 --> 00:05:32,214
+deep learning is to remember that deep learning is just like an onion. It has
+
+93
+00:05:32,252 --> 00:05:35,794
+multiple layers, little bit like Shrek. Now, that sort of covers
+
+94
+00:05:35,842 --> 00:05:38,830
+AI, ML and DL. What about data science?
+
+95
+00:05:38,930 --> 00:05:42,710
+Well, data science is the practice that sits over AI,
+
+96
+00:05:42,790 --> 00:05:46,154
+ML and DL. It basically is the art of
+
+97
+00:05:46,192 --> 00:05:49,978
+extracting knowledge, insight and meaning from data. The best way to
+
+98
+00:05:49,984 --> 00:05:53,994
+remember the key components of data science are to look at the crisp DM
+
+99
+00:05:54,042 --> 00:05:57,322
+framework. So the crisp DM framework stands for the cross
+
+100
+00:05:57,386 --> 00:06:01,294
+industry standard process for data mining. And basically it's a framework to
+
+101
+00:06:01,332 --> 00:06:04,518
+help you along your way to producing really good data science
+
+102
+00:06:04,554 --> 00:06:07,762
+projects. Now, there's six key steps in the data
+
+103
+00:06:07,816 --> 00:06:11,326
+science process. These are business understanding. So understanding
+
+104
+00:06:11,358 --> 00:06:14,798
+the business that you're working with and the environment in which they operate.
+
+105
+00:06:14,974 --> 00:06:18,166
+Two data understanding. So understanding the data that
+
+106
+00:06:18,188 --> 00:06:21,282
+you've got on hand. So whether or not you've got missing values,
+
+107
+00:06:21,346 --> 00:06:24,722
+visualizing that data and taking a look at some summary statistics,
+
+108
+00:06:24,866 --> 00:06:28,374
+we've then got data preparation. So this is all to do with getting our
+
+109
+00:06:28,412 --> 00:06:32,118
+data ready for modeling. In this step, we might perform some feature engineering
+
+110
+00:06:32,134 --> 00:06:35,754
+and create some new columns. We might fill in some missing values and a whole
+
+111
+00:06:35,792 --> 00:06:39,594
+bunch of other data preparation steps, like, for example, splitting our
+
+112
+00:06:39,632 --> 00:06:43,094
+data into training and testing. Next, we've got my favorite,
+
+113
+00:06:43,142 --> 00:06:46,938
+which is modeling. This is all to do with training your machine learning algorithms
+
+114
+00:06:47,034 --> 00:06:50,766
+to perform well on a specific task. Once we've trained our
+
+115
+00:06:50,788 --> 00:06:53,850
+models in that modeling step, we get onto evaluation.
+
+116
+00:06:54,010 --> 00:06:56,734
+Given that we've trained our model, we want to make sure that it's going to
+
+117
+00:06:56,772 --> 00:07:00,670
+work well once we deploy it into the real world. This is what the evaluation
+
+118
+00:07:00,750 --> 00:07:04,066
+step is all about. In this step, we try to check whether or not
+
+119
+00:07:04,088 --> 00:07:07,310
+our model is likely to perform well using specific evaluation
+
+120
+00:07:07,390 --> 00:07:10,806
+metrics. Now, once we've gone through all of that, the last step is
+
+121
+00:07:10,828 --> 00:07:14,386
+to go and deploy our model. In order to deploy our model, we could release
+
+122
+00:07:14,418 --> 00:07:17,526
+it as a rest API containerize it up or save it as
+
+123
+00:07:17,548 --> 00:07:20,954
+a binary so we can go and use it elsewhere. Now,
+
+124
+00:07:20,992 --> 00:07:24,906
+a great way to remember Chris DM is to remember Barry drove directly to
+
+125
+00:07:24,928 --> 00:07:28,822
+the medical emergency department. That way you remember business understanding
+
+126
+00:07:28,886 --> 00:07:32,438
+data understanding data preparation, modeling, evaluation,
+
+127
+00:07:32,534 --> 00:07:35,994
+and deployment. Now, I've talked a lot about theory, but where do the python
+
+128
+00:07:36,042 --> 00:07:39,434
+packages that you typically see used fit into this framework?
+
+129
+00:07:39,562 --> 00:07:43,114
+Well, in terms of data science, numpy, pandas, and Matplotlib
+
+130
+00:07:43,162 --> 00:07:46,738
+are probably going to be the most important packages that you see floating around.
+
+131
+00:07:46,904 --> 00:07:50,626
+Numpy and pandas help you traverse and explore your data and
+
+132
+00:07:50,648 --> 00:07:54,146
+really work with your data in terms of performing manipulations and
+
+133
+00:07:54,168 --> 00:07:57,774
+data preparation. Matplotlib and Seaborne help you visualize
+
+134
+00:07:57,822 --> 00:08:01,062
+that data and explore it even further. Now, the most important
+
+135
+00:08:01,116 --> 00:08:05,026
+library in terms of machine learning is probably scikitlearn. So Scikitlearn's
+
+136
+00:08:05,058 --> 00:08:08,934
+been around for quite some time and gives you a whole bunch of
+
+137
+00:08:08,972 --> 00:08:12,070
+really powerful algorithms and utilities to help use them
+
+138
+00:08:12,140 --> 00:08:16,354
+to train your machine learning models. Now, deep learning is becoming increasingly
+
+139
+00:08:16,402 --> 00:08:20,014
+popular, and there's a large number of libraries that can help you perform
+
+140
+00:08:20,092 --> 00:08:23,482
+deep learning. Some of which are notable are tensorflow,
+
+141
+00:08:23,546 --> 00:08:27,454
+Keras, Pytorch, and piano, just to name a few. And that
+
+142
+00:08:27,492 --> 00:08:30,874
+about wraps up AI versus ML versus DL vs.
+
+143
+00:08:30,922 --> 00:08:34,762
+Ds. Thanks so much for tuning in, guys. Hopefully you found this video useful.
+
+144
+00:08:34,826 --> 00:08:37,642
+If you did, be sure to give it a thumbs up and hit subscribe.
+
+145
+00:08:37,706 --> 00:08:38,766
+Until next time.
+
+1
+00:00:00,170 --> 00:00:03,210
+Ever wondered about the differences between AI, ML,
+
+2
+00:00:03,290 --> 00:00:06,910
+DL and ds? Well, we're about to explore all of those today.
+
+3
+00:00:06,980 --> 00:00:11,162
+Stay tuned. So let's dive right into it. So AI versus ML versus
+
+4
+00:00:11,226 --> 00:00:14,842
+DL versus DS, a whole bunch of jargon, but we're going to clarify
+
+5
+00:00:14,986 --> 00:00:18,366
+all of that right up. So let's kick things off and take a look at
+
+6
+00:00:18,388 --> 00:00:21,646
+AI. So AI is really to
+
+7
+00:00:21,668 --> 00:00:25,314
+do with the ability of computers and machines to perform tasks
+
+8
+00:00:25,362 --> 00:00:28,886
+without explicitly programming them, otherwise known as the
+
+9
+00:00:28,908 --> 00:00:32,886
+ability for computers and machines to think by themselves. So we
+
+10
+00:00:32,908 --> 00:00:36,822
+typically break out AI into two key categories. These are general
+
+11
+00:00:36,876 --> 00:00:40,646
+AI and narrow AI. General AI typically refers to
+
+12
+00:00:40,668 --> 00:00:44,134
+the ability for a computer or a machine to be able to handle a wide
+
+13
+00:00:44,182 --> 00:00:47,626
+variety of tasks. Us as humans have the ability to do
+
+14
+00:00:47,648 --> 00:00:50,922
+a whole heap of stuff. We can see, we can speak, we can hear,
+
+15
+00:00:50,976 --> 00:00:54,142
+we can read, we can drive, we can do a whole range of things.
+
+16
+00:00:54,276 --> 00:00:57,898
+The ability for AI and machines to be able to do a broad range
+
+17
+00:00:57,914 --> 00:01:02,158
+of tasks similar to humans is what we typically refer to as general
+
+18
+00:01:02,244 --> 00:01:05,550
+AI. Now, we're still a little bit of a while away from true
+
+19
+00:01:05,620 --> 00:01:08,658
+general AI, but that's not to say it's not to come.
+
+20
+00:01:08,824 --> 00:01:12,494
+Now, narrow AI, on the other hand, is the ability for a machine
+
+21
+00:01:12,542 --> 00:01:15,934
+to handle a really simple or a really narrow range of tasks.
+
+22
+00:01:15,982 --> 00:01:19,206
+So that could possibly be the ability to translate speech to text,
+
+23
+00:01:19,308 --> 00:01:22,962
+or to classify images as having different categories, or the ability
+
+24
+00:01:23,026 --> 00:01:26,514
+to predict house prices, for example. All of these are examples
+
+25
+00:01:26,562 --> 00:01:29,686
+of narrow AI. So I'm going to be painting a bunch of
+
+26
+00:01:29,708 --> 00:01:32,938
+visual imagery to help you remember some of these topics. So the first one,
+
+27
+00:01:33,024 --> 00:01:36,266
+in terms of breaking out general and narrow AI, or the ability to
+
+28
+00:01:36,288 --> 00:01:40,134
+remember general and narrow AI, is just picture a really narrow
+
+29
+00:01:40,182 --> 00:01:43,434
+or really skinny general in your mind. So that way you know that there's two
+
+30
+00:01:43,472 --> 00:01:47,322
+different types of AI, general and narrow. Now onto the next topic,
+
+31
+00:01:47,386 --> 00:01:50,574
+machine learning. So we've taken a look at AI as being broken up into general
+
+32
+00:01:50,612 --> 00:01:53,886
+and narrow. But how does machine learning fit into this? Well,
+
+33
+00:01:53,988 --> 00:01:58,254
+machine learning is the application of narrow AI to specific tasks.
+
+34
+00:01:58,382 --> 00:02:01,870
+Now, when we typically talk about machine learning, we often compare it to traditional
+
+35
+00:02:01,950 --> 00:02:05,886
+programming. So in traditional programming, we supply data plus rules
+
+36
+00:02:05,918 --> 00:02:09,054
+or conditional logic, and we get answers. Now, in machine
+
+37
+00:02:09,102 --> 00:02:12,322
+learning, on the other hand, we provide data plus historical
+
+38
+00:02:12,386 --> 00:02:15,734
+answers to get rules. We can then pass new data to get new
+
+39
+00:02:15,772 --> 00:02:19,242
+answers. So this is a bit of a change in the paradigm of how computer
+
+40
+00:02:19,296 --> 00:02:23,002
+scientists and machine learning engineers are building programs these days.
+
+41
+00:02:23,136 --> 00:02:27,094
+So what are some typical machine learning tasks? Well, we broadly
+
+42
+00:02:27,142 --> 00:02:30,278
+break out machine learning into three key categories.
+
+43
+00:02:30,374 --> 00:02:34,266
+These are supervised learning, unsupervised learning, and semisupervised
+
+44
+00:02:34,298 --> 00:02:38,206
+learning. So let's take a look at supervised learning first. So, supervised learning can be
+
+45
+00:02:38,228 --> 00:02:41,374
+broadly broken out into two key categories. These are
+
+46
+00:02:41,412 --> 00:02:45,438
+classification and regression. Classification is all to do with
+
+47
+00:02:45,524 --> 00:02:48,786
+grouping things into categories or labels. So say you had
+
+48
+00:02:48,808 --> 00:02:51,966
+a big data set on all the different types of pizzas you've liked
+
+49
+00:02:51,998 --> 00:02:55,106
+and whether or not you've liked them. Yes or no, you could take
+
+50
+00:02:55,128 --> 00:02:58,190
+that data and pass it through to a classification algorithm
+
+51
+00:02:58,270 --> 00:03:01,446
+to help it learn which types of pizzas you like. So then when you pass
+
+52
+00:03:01,468 --> 00:03:04,966
+through a new list of ingredients, it would be able to predict, yes, you would
+
+53
+00:03:04,988 --> 00:03:08,374
+like that pizza or no, you might not. Regression, on the other
+
+54
+00:03:08,412 --> 00:03:12,246
+hand, is all to do with predicting continuous variables. Some great examples
+
+55
+00:03:12,278 --> 00:03:15,894
+of regression are sales forecasting and predicting prices of houses.
+
+56
+00:03:15,942 --> 00:03:19,094
+So that encapsulates supervised learning. Now, what about unsupervised
+
+57
+00:03:19,142 --> 00:03:22,942
+learning? Well, there's two key things to think about when you think of
+
+58
+00:03:22,996 --> 00:03:26,394
+unsupervised learning. These are really clustering. So the ability
+
+59
+00:03:26,442 --> 00:03:30,126
+to group people together. So say you wanted to group together high performing and
+
+60
+00:03:30,148 --> 00:03:33,742
+low performing and medium performing employees, or high value,
+
+61
+00:03:33,796 --> 00:03:37,554
+low value, medium value customers, or a whole bunch of other different types of
+
+62
+00:03:37,592 --> 00:03:40,338
+data. But really it's all to do with grouping things together.
+
+63
+00:03:40,424 --> 00:03:44,910
+Now, dimensionality reduction, on the other hand, is all to do with condensing
+
+64
+00:03:44,990 --> 00:03:48,386
+the features that you've got within a machine learning model. So a lot of the
+
+65
+00:03:48,408 --> 00:03:51,874
+time you might start out with a huge data set with a lot of columns,
+
+66
+00:03:51,922 --> 00:03:55,254
+and you're not really sure which of those columns are important for your machine learning
+
+67
+00:03:55,292 --> 00:03:58,534
+model, dimensionality reduction helps you reduce the number
+
+68
+00:03:58,572 --> 00:04:02,058
+of columns that you've got so that you can really focus on the important
+
+69
+00:04:02,144 --> 00:04:05,674
+ones. Now, in order to remember supervised learning and
+
+70
+00:04:05,712 --> 00:04:09,510
+unsupervised learning, I'd suggest you remember this initialism,
+
+71
+00:04:09,590 --> 00:04:13,210
+Christopher Robin caught a duck. So that way you remember classification,
+
+72
+00:04:13,370 --> 00:04:16,846
+regression, clustering and dimensionality reduction. So that
+
+73
+00:04:16,868 --> 00:04:20,186
+takes care of supervised and unsupervised learning. But what about semi
+
+74
+00:04:20,218 --> 00:04:23,694
+supervised learning? Well, this is where reinforcement learning comes
+
+75
+00:04:23,732 --> 00:04:27,442
+in. Now, reinforcement learning has four key things. These are
+
+76
+00:04:27,496 --> 00:04:30,798
+an agent, an action, an environment, and a reward.
+
+77
+00:04:30,894 --> 00:04:34,514
+It's similar to how you might choose to condition a dog. A dog
+
+78
+00:04:34,552 --> 00:04:38,246
+might do something right, and you might reward it with a piece of food.
+
+79
+00:04:38,348 --> 00:04:42,022
+In a similar way, we train reinforcement learning models to act
+
+80
+00:04:42,076 --> 00:04:45,794
+in a correct way in a given environment in order to learn appropriate
+
+81
+00:04:45,842 --> 00:04:48,966
+actions given that specific environment. Now, the best way
+
+82
+00:04:48,988 --> 00:04:52,778
+to remember, reinforcement learning techniques is to remember area
+
+83
+00:04:52,864 --> 00:04:56,214
+51. So that way you remember agent reward environment
+
+84
+00:04:56,262 --> 00:04:59,818
+and actions. Okay? So that takes care of machine learning. Now we're going
+
+85
+00:04:59,824 --> 00:05:03,306
+to delve a little bit deeper and get into deep learning. So deep
+
+86
+00:05:03,338 --> 00:05:07,274
+learning is a subset of machine learning, and really it's to do with performing
+
+87
+00:05:07,322 --> 00:05:10,746
+machine learning tasks using deep neural networks.
+
+88
+00:05:10,858 --> 00:05:14,682
+Now, deep neural networks are networks that have multiple hidden layers.
+
+89
+00:05:14,746 --> 00:05:18,066
+So if you've ever seen a diagram that looks sort of like this,
+
+90
+00:05:18,168 --> 00:05:21,278
+this is a representation of a neural network.
+
+91
+00:05:21,374 --> 00:05:24,834
+But specifically in this case, this is a deep neural network because
+
+92
+00:05:24,872 --> 00:05:28,538
+it has multiple hidden layers. Now, the best way to remember deep
+
+93
+00:05:28,574 --> 00:05:31,762
+learning is to remember that deep learning is just like an onion.
+
+94
+00:05:31,826 --> 00:05:35,286
+It has multiple layers, little bit like Shrek. Now, that sort
+
+95
+00:05:35,308 --> 00:05:38,830
+of covers AI, ML and DL. What about data science?
+
+96
+00:05:38,930 --> 00:05:42,710
+Well, data science is the practice that sits over AI,
+
+97
+00:05:42,790 --> 00:05:45,850
+ML and DL. It basically is the art
+
+98
+00:05:45,920 --> 00:05:49,258
+of extracting knowledge, insight and meaning from data.
+
+99
+00:05:49,344 --> 00:05:52,874
+The best way to remember the key components of data science are to look at
+
+100
+00:05:52,912 --> 00:05:56,798
+the crisp DM framework. So the crisp DM framework stands for
+
+101
+00:05:56,804 --> 00:06:00,426
+the cross industry standard process for data mining. And basically it's
+
+102
+00:06:00,458 --> 00:06:04,142
+a framework to help you along your way to producing really good data
+
+103
+00:06:04,196 --> 00:06:07,762
+science projects. Now, there's six key steps in the data
+
+104
+00:06:07,816 --> 00:06:11,326
+science process. These are business understanding. So understanding
+
+105
+00:06:11,358 --> 00:06:14,798
+the business that you're working with and the environment in which they operate.
+
+106
+00:06:14,974 --> 00:06:18,166
+Two data understanding. So understanding the data that
+
+107
+00:06:18,188 --> 00:06:21,282
+you've got on hand. So whether or not you've got missing values,
+
+108
+00:06:21,346 --> 00:06:24,722
+visualizing that data and taking a look at some summary statistics,
+
+109
+00:06:24,866 --> 00:06:28,102
+we've then got data preparation. So this is all to do with getting
+
+110
+00:06:28,156 --> 00:06:32,118
+our data ready for modeling. In this step, we might perform some feature engineering
+
+111
+00:06:32,134 --> 00:06:35,754
+and create some new columns. We might fill in some missing values and a whole
+
+112
+00:06:35,792 --> 00:06:39,594
+bunch of other data preparation steps, like, for example, splitting our
+
+113
+00:06:39,632 --> 00:06:43,914
+data into training and testing. Next, we've got my favorite, which is modeling.
+
+114
+00:06:43,962 --> 00:06:47,678
+This is all to do with training your machine learning algorithms to perform
+
+115
+00:06:47,764 --> 00:06:51,198
+well on a specific task. Once we've trained our models in
+
+116
+00:06:51,204 --> 00:06:54,938
+that modeling step, we get onto evaluation. Given that we've trained
+
+117
+00:06:54,954 --> 00:06:57,746
+our model, we want to make sure that it's going to work well once we
+
+118
+00:06:57,768 --> 00:07:01,266
+deploy it into the real world. This is what the evaluation step is
+
+119
+00:07:01,288 --> 00:07:04,706
+all about. In this step, we try to check whether or not our model is
+
+120
+00:07:04,728 --> 00:07:07,982
+likely to perform well using specific evaluation metrics.
+
+121
+00:07:08,046 --> 00:07:11,334
+Now, once we've gone through all of that, the last step is to go and
+
+122
+00:07:11,372 --> 00:07:14,806
+deploy our model. In order to deploy our model, we could release it as a
+
+123
+00:07:14,828 --> 00:07:18,406
+rest API containerize it up or save it as a binary so
+
+124
+00:07:18,428 --> 00:07:21,914
+we can go and use it elsewhere. Now, a great way to remember
+
+125
+00:07:21,952 --> 00:07:25,462
+Chris DM is to remember Barry drove directly to the medical
+
+126
+00:07:25,526 --> 00:07:29,210
+emergency department. That way you remember business understanding data
+
+127
+00:07:29,280 --> 00:07:32,438
+understanding data preparation, modeling, evaluation,
+
+128
+00:07:32,534 --> 00:07:35,598
+and deployment. Now, I've talked a lot about theory, but where do the
+
+129
+00:07:35,604 --> 00:07:39,434
+python packages that you typically see used fit into this framework?
+
+130
+00:07:39,562 --> 00:07:43,278
+Well, in terms of data science, numpy, pandas, and Matplotlib are
+
+131
+00:07:43,284 --> 00:07:46,738
+probably going to be the most important packages that you see floating around.
+
+132
+00:07:46,904 --> 00:07:50,882
+Numpy and pandas help you traverse and explore your data and really
+
+133
+00:07:50,936 --> 00:07:55,246
+work with your data in terms of performing manipulations and data preparation.
+
+134
+00:07:55,358 --> 00:07:59,026
+Matplotlib and Seaborne help you visualize that data and explore
+
+135
+00:07:59,058 --> 00:08:02,886
+it even further. Now, the most important library in terms of machine learning is
+
+136
+00:08:02,908 --> 00:08:06,374
+probably scikitlearn. So Scikitlearn's been around for quite some time
+
+137
+00:08:06,412 --> 00:08:10,274
+and gives you a whole bunch of really powerful algorithms
+
+138
+00:08:10,322 --> 00:08:14,130
+and utilities to help use them to train your machine learning models.
+
+139
+00:08:14,210 --> 00:08:17,446
+Now, deep learning is becoming increasingly popular, and there's a
+
+140
+00:08:17,468 --> 00:08:20,862
+large number of libraries that can help you perform deep learning.
+
+141
+00:08:20,996 --> 00:08:24,122
+Some of which are notable are tensorflow, Keras,
+
+142
+00:08:24,186 --> 00:08:27,454
+Pytorch, and piano, just to name a few. And that
+
+143
+00:08:27,492 --> 00:08:30,874
+about wraps up AI versus ML versus DL vs.
+
+144
+00:08:30,922 --> 00:08:34,762
+Ds. Thanks so much for tuning in, guys. Hopefully you found this video useful.
+
+145
+00:08:34,826 --> 00:08:37,642
+If you did, be sure to give it a thumbs up and hit subscribe.
+
+146
+00:08:37,706 --> 00:08:38,766
+Until next time.
+

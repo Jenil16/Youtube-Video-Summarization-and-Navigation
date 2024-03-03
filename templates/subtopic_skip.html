@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Subtopic-skip page</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Video Downloader</title>
+  </head>
+  <body>
+    <h1>Subtopic-based skip</h1>
+    <form action="/video_skip" method="post">
+      <label for="subtopic">Enter Subtopic:</label><br />
+      <input type="text" id="subtopic" name="subtopic" /><br />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="videoContainer"></div>
+
+    
+  </body>
 </html>
