@@ -132,7 +132,7 @@ def video_skip():
 
 # All the functions are below here
     
-
+#used to get video title
 def get_video_title(url):
     try:
         yt = YouTube(url)
@@ -142,7 +142,7 @@ def get_video_title(url):
         print("Error:", e)
         return None
 
-    
+#used to get youtube id    
 def get_youtube_id(url):
     # Regular expression to match YouTube video IDs in various URL formats
     regex = r"(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})"   
@@ -152,28 +152,28 @@ def get_youtube_id(url):
     else:
         return None  # Return None if no match is found
 
-
+#used to download to video
 def download_video(url, save_path):
     yt = YouTube(url)
     stream = yt.streams.filter(file_extension='mp4').first()  # Get the highest resolution MP4 stream
     stream.download(output_path=save_path)
     print("Download completed.")
 
-
+#used to convert video into audio
 def convert_video_to_audio(video_path, audio_path):
     video = mp.VideoFileClip(video_path)
     audio = video.audio
     audio.write_audiofile(audio_path)
     print("Conversion completed.")
 
-
+#used to summarize the text 
 def summarize_text(text, num_sentences):
     parser = PlaintextParser.from_string(text, Tokenizer("english"))
     summarizer = LsaSummarizer()
     summary = summarizer(parser.document, num_sentences)
     return " ".join(str(sentence) for sentence in summary)
 
-
+#
 def parse_srt(file_path):
     subtitles = []
     with open(file_path, 'r') as f:
