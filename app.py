@@ -173,7 +173,7 @@ def get_youtube_id(url):
     else:
         return None  # Return None if no match is found
 
-
+#function is used to download video
 def download_video(url, save_path, video_id):
     yt = YouTube(url)
     stream = yt.streams.filter(file_extension='mp4').first()  # Get the highest resolution MP4 stream
@@ -182,7 +182,7 @@ def download_video(url, save_path, video_id):
     stream.download(output_path=save_path, filename=file_name)
     print("Download completed.")
 
-
+#funtion is used to convert video to audio
 def convert_video_to_audio(video_path, audio_path):
     video = mp.VideoFileClip(video_path)
     audio = video.audio
