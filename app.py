@@ -64,9 +64,8 @@ def add_video():
 def translate():
     # global video_url
     global output_text
-    video_id = get_youtube_id(video_url)
-    # video_title = get_video_title(video_url)
-
+    global video_id
+ 
     if output_text is None:
         # Building srt file
         aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
@@ -90,8 +89,8 @@ def translate():
 def summary():
     global video_url
     global output_text
-    video_id = get_youtube_id(video_url)
-    # video_title = get_video_title(video_url)
+    global video_id
+    
     if output_text is not None:
         s = output_text.split(".")
         l = len(s)
@@ -153,7 +152,6 @@ def video_skip():
     global subtopic
     global video_id
     
-
     # time = 0
     subtitles = parse_srt("./video_audio_files/"+video_id+".srt")
     subtopic = request.form['subtopic']
