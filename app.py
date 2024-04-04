@@ -21,6 +21,7 @@ video_url = None
 time = 0
 subtopic = None
 video_id = None
+onComplete = 0
 
 
 
@@ -58,6 +59,18 @@ def add_video():
     else:
         return 'Please enter a valid YouTube video URL.'
     
+
+
+@app.route('/check_download_status')
+def check_download_status():
+    global onComplete
+    global video_id
+
+    if file_exists_in_folder("./video_audio_files", video_id+".mp4"):
+        onComplete = 1
+
+    return jsonify({'onComplete': onComplete})
+
 
 
 @app.route('/translate', methods=['GET','POST'])
