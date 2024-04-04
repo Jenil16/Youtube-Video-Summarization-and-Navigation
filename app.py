@@ -16,10 +16,11 @@ nltk.download('punkt')
 
 app = Flask(__name__)
 # global video_url   # Initializing the global variable
-global output_text
+output_text = None
 video_url = None
 time = 0
 subtopic = None
+video_id = None
 
 
 
@@ -34,8 +35,10 @@ def index():
 @app.route('/add_video', methods=['POST'])
 def add_video():
     global video_url
+    global video_id
     video_url = request.form['videoUrl']
     video_id = get_youtube_id(video_url)
+    video_title = get_video_title(video_url)
 
     if video_id:
 
@@ -64,18 +67,22 @@ def translate():
     video_id = get_youtube_id(video_url)
     # video_title = get_video_title(video_url)
 
-    # Building srt file
-    aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-    transcriber = aai.Transcriber()
-    transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
-    # transcript = transcriber.transcribe("./my-local-audio-file.wav")
-    subtitles = transcript.export_subtitles_srt()
-    f = open("./video_audio_files/"+video_id+".srt", "a")
-    f.write(subtitles)
-    f.close()
-    output_text = transcript.text
-    # print(transcript.text)
-    return render_template("translate.html" , output_text=output_text)
+    if output_text is None:
+        # Building srt file
+        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
+        transcriber = aai.Transcriber()
+        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
+        # transcript = transcriber.transcribe("./my-local-audio-file.wav")
+        subtitles = transcript.export_subtitles_srt()
+        f = open("./video_audio_files/"+video_id+".srt", "a")
+        f.write(subtitles)
+        f.close()
+        output_text = transcript.text
+        # print(transcript.text)
+        return render_template("translate.html" , output_text=output_text)
+    
+    else:
+        return render_template("translate.html" , output_text=output_text)
 
 
 
@@ -93,7 +100,6 @@ def summary():
         return render_template("summary.html", summarized_text=summary)
 
     else:
-
         # Building srt file
         aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
         transcriber = aai.Transcriber()
@@ -112,18 +118,29 @@ def summary():
 def subtopic_skip():
     global video_url
     global output_text
-    # video_title = get_video_title(video_url)
-    video_id = get_youtube_id(video_url)
-    
-    # Building srt file
-    aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-    transcriber = aai.Transcriber()
-    transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
-    # transcript = transcriber.transcribe("./my-local-audio-file.wav")
-    subtitles = transcript.export_subtitles_srt()
-    f = open("./video_audio_files/"+video_id+".srt", "a")
-    f.write(subtitles)
-    f.close()
+    global video_id
+      
+    if file_exists_in_folder("./video_audio_files", video_id+".mp4"):                             
+        # Building srt file
+        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
+        transcriber = aai.Transcriber()
+        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
+        # transcript = transcriber.transcribe("./my-local-audio-file.wav")
+        subtitles = transcript.export_subtitles_srt()
+        f = open("./video_audio_files/"+video_id+".srt", "a")
+        f.write(subtitles)
+        f.close()
+
+    else:
+        # Building srt file
+        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
+        transcriber = aai.Transcriber()
+        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
+        # transcript = transcriber.transcribe("./my-local-audio-file.wav")
+        subtitles = transcript.export_subtitles_srt()
+        f = open("./video_audio_files/"+video_id+".srt", "a")
+        f.write(subtitles)
+        f.close()
     
     return render_template("subtopic_skip.html")
     
@@ -134,8 +151,8 @@ def video_skip():
     global video_url
     global time
     global subtopic
-    # video_title = get_video_title(video_url)
-    video_id = get_youtube_id(video_url)
+    global video_id
+    
 
     # time = 0
     subtitles = parse_srt("./video_audio_files/"+video_id+".srt")
@@ -182,18 +199,11 @@ def download_video(url, save_path, video_id):
     print("Download completed.")
 
 #funtion is used to convert video to audio
-def convert_video_to_audio(video_path, audio_path):
-    video = mp.VideoFileClip(video_path)
-    audio = video.audio
-    audio.write_audiofile(audio_path)
-
-    # video = AudioSegment.from_file(video_path)
-    #
-    # # Extract the audio from the video
-    # audio = video.set_channels(1)  # Ensure mono audio for simplicity
-    # # audio.export(audio_path, format="wav")
-    # audio.write_audiofile(audio_path)
-    print("Conversion completed.")
+# def convert_video_to_audio(video_path, audio_path):
+#     video = mp.VideoFileClip(video_path)
+#     audio = video.audio
+#     audio.write_audiofile(audio_path)
+#     print("Conversion completed.")
 
 
 def summarize_text(text, num_sentences):
@@ -238,12 +248,11 @@ def find_subtitle_containing_text(subtitles, subtopic):
     return None
 
 
-# def file_exists_in_folder(folder_path, filename):
-#     # Get list of files in the folder
-#     files = os.listdir(folder_path)
-#
-#     # Check if the filename exists in the list of files
-#     return filename in files
+def file_exists_in_folder(folder_path, filename):
+    # Get list of files in the folder
+    files = os.listdir(folder_path)
+    # Check if the filename exists in the list of files
+    return filename in files
 
 
 
