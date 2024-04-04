@@ -175,7 +175,7 @@ def get_youtube_id(url):
 #function is used to download video
 def download_video(url, save_path, video_id):
     yt = YouTube(url)
-    stream = yt.streams.filter(file_extension='mp4').first()  # Get the highest resolution MP4 stream
+    stream = yt.streams.filter(file_extension='mp4', resolution='360p').first()  # Get the highest resolution MP4 stream
     file_name = f"{video_id}.mp4"
     file_path = os.path.join(save_path, file_name)
     stream.download(output_path=save_path, filename=file_name)
