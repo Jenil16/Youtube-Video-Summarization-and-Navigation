@@ -49,6 +49,10 @@ def add_video():
         video_file_name = f"{video_id}.mp4"
         # audio_file_name = f"{video_id}.wav"
 
+        if file_exists_in_folder("./video_audio_files", video_id+".mp4"):
+            return render_template('video_page.html', video_url = vurl)
+        
+        
         threading.Thread(target=download_video, args=(video_url, save_path, video_id)).start()
 
         # download_video(video_url, save_path, video_id)
