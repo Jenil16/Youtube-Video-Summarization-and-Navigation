@@ -24,7 +24,6 @@ video_id = None
 onComplete = 0
 
 
-
 # All the routes are below here
 
 @app.route('/')
@@ -56,7 +55,7 @@ def add_video():
         threading.Thread(target=download_video, args=(video_url, save_path, video_id)).start()
 
         # download_video(video_url, save_path, video_id)
-        video_path = f"{save_path}/{video_file_name}"
+        # video_path = f"{save_path}/{video_file_name}"
         # audio_path = f"{save_path}/{audio_file_name}"
         # convert_video_to_audio(video_path, audio_path)
         return render_template('video_page.html', video_url = vurl)
@@ -89,12 +88,7 @@ def translate():
         transcriber = aai.Transcriber()
         transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
         # transcript = transcriber.transcribe("./my-local-audio-file.wav")
-        subtitles = transcript.export_subtitles_srt()
-        f = open("./video_audio_files/"+video_id+".srt", "a")
-        f.write(subtitles)
-        f.close()
         output_text = transcript.text
-        # print(transcript.text)
         return render_template("translate.html" , output_text=output_text)
     
     else:
@@ -132,32 +126,21 @@ def summary():
 
 @app.route('/subtopic_skip', methods=['GET','POST'])
 def subtopic_skip():
-    global video_url
-    global output_text
     global video_id
       
-    if file_exists_in_folder("./video_audio_files", video_id+".mp4"):                             
-        # Building srt file
-        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-        transcriber = aai.Transcriber()
-        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
-        # transcript = transcriber.transcribe("./my-local-audio-file.wav")
-        subtitles = transcript.export_subtitles_srt()
-        f = open("./video_audio_files/"+video_id+".srt", "a")
-        f.write(subtitles)
-        f.close()
+    if file_exists_in_folder("./video_audio_files", video_id+".srt"):
+        return render_template("subtopic_skip.html")
 
-    else:
-        # Building srt file
-        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-        transcriber = aai.Transcriber()
-        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
-        # transcript = transcriber.transcribe("./my-local-audio-file.wav")
-        subtitles = transcript.export_subtitles_srt()
-        f = open("./video_audio_files/"+video_id+".srt", "a")
-        f.write(subtitles)
-        f.close()
-    
+    # Building srt file
+    aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
+    transcriber = aai.Transcriber()
+    transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
+    # transcript = transcriber.transcribe("./my-local-audio-file.wav")
+    subtitles = transcript.export_subtitles_srt()
+    f = open("./video_audio_files/"+video_id+".srt", "a")
+    f.write(subtitles)
+    f.close()
+
     return render_template("subtopic_skip.html")
     
 
