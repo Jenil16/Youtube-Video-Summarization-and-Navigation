@@ -83,45 +83,27 @@ def translate():
     global video_id
  
     if output_text is None:
-        # Building srt file
-        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-        transcriber = aai.Transcriber()
-        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
-        # transcript = transcriber.transcribe("./my-local-audio-file.wav")
+        transcript = get_transcript(video_id)
         output_text = transcript.text
-        return render_template("translate.html" , output_text=output_text)
-    
+        return render_template("translate.html" , output_text=output_text)    
     else:
         return render_template("translate.html" , output_text=output_text)
-
 
 
 @app.route('/summary', methods=['GET','POST'])
 def summary():
-    global video_url
     global output_text
     global video_id
     
-    if output_text is not None:
-        s = output_text.split(".")
-        l = len(s)
-        n = math.ceil(l * 0.33)
-        summary = summarize_text(output_text, n)
-        return render_template("summary.html", summarized_text=summary)
-
-    else:
-        # Building srt file
-        aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-        transcriber = aai.Transcriber()
-        transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
+    if output_text is None:
+        transcript = get_transcript(video_id)
         output_text = transcript.text
-        s = output_text.split(".")
-        l = len(s)
-        n = math.ceil(l * 0.33)
-        summary = summarize_text(output_text,n)
-
-        return render_template("summary.html", summarized_text = summary)
-
+    
+    s = output_text.split(".")
+    l = len(s)
+    n = math.ceil(l * 0.33)
+    summary = summarize_text(output_text, n)
+    return render_template("summary.html", summarized_text=summary)
 
 
 @app.route('/subtopic_skip', methods=['GET','POST'])
@@ -132,22 +114,16 @@ def subtopic_skip():
         return render_template("subtopic_skip.html")
 
     # Building srt file
-    aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
-    transcriber = aai.Transcriber()
-    transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
-    # transcript = transcriber.transcribe("./my-local-audio-file.wav")
+    transcript = get_transcript(video_id)
     subtitles = transcript.export_subtitles_srt()
     f = open("./video_audio_files/"+video_id+".srt", "a")
     f.write(subtitles)
     f.close()
-
     return render_template("subtopic_skip.html")
     
 
-
 @app.route('/video_skip', methods=['POST','GET'])
 def video_skip():
-    global video_url
     global time
     global subtopic
     global video_id
@@ -167,7 +143,6 @@ def video_skip():
 
 # All the functions are below here
     
-
 def get_video_title(url):
     try:
         yt = YouTube(url)
@@ -192,7 +167,6 @@ def download_video(url, save_path, video_id):
     yt = YouTube(url)
     stream = yt.streams.filter(file_extension='mp4', resolution='360p').first()  # Get the highest resolution MP4 stream
     file_name = f"{video_id}.mp4"
-    file_path = os.path.join(save_path, file_name)
     stream.download(output_path=save_path, filename=file_name)
     print("Download completed.")
 
@@ -202,6 +176,13 @@ def download_video(url, save_path, video_id):
 #     audio = video.audio
 #     audio.write_audiofile(audio_path)
 #     print("Conversion completed.")
+
+
+def get_transcript(video_id):
+    aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
+    transcriber = aai.Transcriber()
+    transcript = transcriber.transcribe("./video_audio_files/"+video_id+".mp4")
+    return transcript
 
 
 def summarize_text(text, num_sentences):
