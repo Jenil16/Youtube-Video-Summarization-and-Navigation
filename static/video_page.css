@@ -1,119 +1,126 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 body {
-  font-family: 'Titillium Web', sans-serif;
-  background-color: #14181e;
+	font-family: 'Titillium Web', sans-serif;
+	background-color: #14181e;
 }
 
 
 /* Navbar CSS */
 .navbar {
-    width: 100%;
-    height: 10vh;
-    /* background-color: #2A3340; */
-    background-color: #222832;
-    color: white;
+	width: 100%;
+	height: 10vh;
+	/* background-color: #2A3340; */
+	background-color: #222832;
+	color: white;
 }
+
 .navbarName {
-    position: absolute;
-    bottom: 22px;
+	position: absolute;
+	bottom: 22px;
 }
+
 .logo img {
-  width: 24%;
-  margin-left: 10px;
+	width: 24%;
+	margin-left: 10px;
 }
 
 
 /* Spinner CSS */
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #333;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-  }
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #333;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation: spin 1s linear infinite;
+}
 
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
 
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+	100% {
+		transform: rotate(360deg);
+	}
+}
 
 /* button CSS */
 #features button {
-    display: none;
-    font-family: 'Helvetica', serif;
-    width: auto;
-    padding: 5px 20px;
-    background-color: #3fb1c5;
-    border: 4px solid #3fb1c5;
-    color: #14181e;   
-    margin: 0px 1rem 0px 0px;
-    border-radius: 5px;
-    font-size: 1.3rem;
-    /* margin-top: 0.75rem; */
-    font-weight: 549;
+	display: none;
+	font-family: 'Helvetica', serif;
+	width: auto;
+	padding: 5px 20px;
+	background-color: #3fb1c5;
+	border: 4px solid #3fb1c5;
+	color: #14181e;
+	margin: 0px 1rem 0px 0px;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	/* margin-top: 0.75rem; */
+	font-weight: 549;
 }
 
 
-#features button:hover{
-    font-size: 1.3rem;
-    background: none;
-    border: 4px solid #3fb1c5;
-    padding: 5px 20px;
-    margin: 0px 1rem 0px 0px;
-    border-radius: 5px;
-    width: auto;
-    color: #3fb1c5; 
+#features button:hover {
+	font-size: 1.3rem;
+	background: none;
+	border: 4px solid #3fb1c5;
+	padding: 5px 20px;
+	margin: 0px 1rem 0px 0px;
+	border-radius: 5px;
+	width: auto;
+	color: #3fb1c5;
 }
 
 
-#videoframe{
-  /* background-color: yellow; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0rem ;
+#videoframe {
+	/* background-color: yellow; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem 0rem;
 }
 
-#features{
-  /* background-color: blue; */
-  padding: 2rem 0;
-  /* margin: 0; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+#features {
+	/* background-color: blue; */
+	padding: 2rem 0;
+	/* margin: 0; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
-.form_buttons{
-  background-color: #29313d;
-  padding: 10px 15px;
-  width: auto;
-  display: flex;
-  
+.form_buttons {
+	background-color: #29313d;
+	/* background-color: #C8A2C8; */
+	padding: 10px 15px;
+	width: auto;
+	display: flex;
+	border-radius: 5px;
+	box-shadow: 5px 5px #4f4f4f;
+}
+
+#features #subtopicSkipButton{
+	margin: 0px;
 }
 
 /* Video Frame */
-#videoframe{
-  width: auto;
+#videoframe {
+	width: auto;
 }
 
-#videoframe iframe{
-  width:720px; 
-  height:418px;
+#videoframe iframe {
+	width: 720px;
+	height: 418px;
 }
