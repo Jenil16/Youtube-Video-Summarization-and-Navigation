@@ -16,7 +16,7 @@
   <nav class="navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', filename='youtube3-removebg-preview.png')}}" alt="Logo" width="145" height="45"
+        <img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="145" height="45"
           class="d-inline-block align-text-top" />
         <span class="fw-bold text-white navbarName">Video Summarization Navigation System</span>
       </a>
@@ -26,7 +26,7 @@
     </div>
   </nav>
   <section id="videoframe">
-    <iframe width="560" height="315" src="{{video_url}}" frameborder="0" allowfullscreen title="videoFrame"></iframe>
+    <iframe src="{{video_url}}" frameborder="0" allowfullscreen title="videoFrame"></iframe>
   </section>
 
   <section id="features">
@@ -36,16 +36,20 @@
       <div id="spinner" class="spinner"></div>
     </div>
 
-    <!-- Translate buttons (initially hidden) -->
-    <button id="translateButton" class="buttons">
-      <a href="/translate">Transcript</a>
-    </button>
-    <button id="summaryButton" class="buttons">
-      <a href="/summary">Summary</a>
-    </button>
-    <button id="subtopicSkipButton" class="buttons">
-      <a href="/subtopic_skip">Subtopic-skip</a>
-    </button>
+    <div class="form_buttons">
+
+      <!-- Translate buttons (initially hidden) -->
+      <form action="/translate" method="post">
+      <button type="submit" id="translateButton" class="buttons">Transcript</button>
+    </form>
+    <form action="/summary" method="post">
+      <button type="submit" id="summaryButton" class="buttons">Summary</button>
+    </form>
+    <form action="/subtopic_skip" method="post">
+      <button type="submit" id="subtopicSkipButton" class="buttons">Subtopic-skip</button>
+    </form>
+  </div>
+
   </section>
 </body>
 

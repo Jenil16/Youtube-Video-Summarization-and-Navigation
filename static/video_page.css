@@ -9,9 +9,8 @@ html {
 }
 
 body {
-    /* background: #c1bdba; */
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #5F6D73;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #14181e;
 }
 
 
@@ -20,7 +19,7 @@ body {
     width: 100%;
     height: 10vh;
     /* background-color: #2A3340; */
-    background-color: #2F3D40;
+    background-color: #222832;
     color: white;
 }
 .navbarName {
@@ -28,10 +27,10 @@ body {
     bottom: 22px;
 }
 .logo img {
-    width: 24%;
-    /* height: 100px; */
-    margin-left: 20px;
+  width: 24%;
+  margin-left: 10px;
 }
+
 
 /* Spinner CSS */
 .spinner {
@@ -53,11 +52,68 @@ body {
     }
   }
 
-  a {
-    text-decoration: none;
-  }
-
 /* button CSS */
 #features button {
     display: none;
+    font-family: 'Helvetica', serif;
+    width: auto;
+    padding: 5px 20px;
+    background-color: #3fb1c5;
+    border: 4px solid #3fb1c5;
+    color: #14181e;   
+    margin: 0px 1rem 0px 0px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    /* margin-top: 0.75rem; */
+    font-weight: 549;
+}
+
+
+#features button:hover{
+    font-size: 1.3rem;
+    background: none;
+    border: 4px solid #3fb1c5;
+    padding: 5px 20px;
+    margin: 0px 1rem 0px 0px;
+    border-radius: 5px;
+    width: auto;
+    color: #3fb1c5; 
+}
+
+
+#videoframe{
+  /* background-color: yellow; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0rem ;
+}
+
+#features{
+  /* background-color: blue; */
+  padding: 2rem 0;
+  /* margin: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.form_buttons{
+  background-color: #29313d;
+  padding: 10px 15px;
+  width: auto;
+  display: flex;
+  
+}
+
+/* Video Frame */
+#videoframe{
+  width: auto;
+}
+
+#videoframe iframe{
+  width:720px; 
+  height:418px;
 }
