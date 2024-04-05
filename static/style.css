@@ -5,9 +5,8 @@
 }
 
 body {
-    /* background: #c1bdba; */
     font-family: 'Titillium Web', sans-serif;
-    background-color: #5F6D73;
+    background-color: #14181e;
 }
 
 a {
@@ -39,13 +38,41 @@ a {
 }
 
 .container form input {
-    background-color: #b4bbc6;
+    background-color: #222832;
+    /* border: none; */
+    border: 1px solid #222832;
+}
+
+.container form input:focus{
+    border: 1px solid #1ab188;
 }
 
 .container form button {
-    margin-top: 1%;
+    font-family: 'Helvetica', serif;
     width: auto;
+    background-color: #3fb1c5;
+    border: 4px solid #3fb1c5;
+    color: #14181e;
+    padding: 5px 20px;
+    margin: 4px 1px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    margin-top: 0.75rem;
+    font-weight: 549;
+
 }
+.container form button:hover {
+    font-size: 1.3rem;
+    background: none;
+    border: 4px solid #3fb1c5;
+    padding: 5px 20px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    width: auto;
+    margin-top: 0.75rem;
+    color: #3fb1c5;
+}
+
 
 /* .container form label {
     font-size: 22px;
@@ -55,19 +82,16 @@ a {
 .navbar {
     width: 100%;
     height: 10vh;
-    /* background-color: #2A3340; */
-    background-color: #2F3D40;
+    background-color: #222832;
     color: white;
 }
 
 .logo img {
     width: 24%;
-    /* height: 100px; */
     margin-left: 20px;
 }
 
 .signup-login-form {
-    /* background: #13232f; */
     background: #2F3D40;
     padding: 40px;
     width: 550px;
@@ -94,7 +118,6 @@ a {
         display: block;
         text-decoration: none;
         padding: 10px;
-        /* background: #a0b3b0; */
         background: #4c5c5f;
         color: white;
         font-size: 20px;
@@ -170,11 +193,11 @@ label.highlight {
 
 input,
 textarea {
-    font-size: 22px;
+    font-size: 1.2rem;
     display: block;
     width: 100%;
     height: auto;
-    padding: 5px 10px;
+    padding: 8px 10px;
     background: none;
     background-image: none;
     color: #ffffff;
@@ -184,12 +207,13 @@ textarea {
 
     &:focus {
         outline: 0;
-        border-color: #1ab188;
+        border: 1px solid #1ab188;
     }
 }
 
 input::placeholder {
     color: White;
+    opacity: 0.5;
     font-size: 1.2rem;
 }
 
