@@ -12,16 +12,15 @@
 </head>
 
 <body>
-	<nav class="navbar">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
-				<img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80" height="45" class=""/>
-				<span class="fw-bold text-white navbarName">Video Summarization & Navigation System</span>
-			</a>
-			<button type="button" class="btn btn-outline-light border-3 border-white" id="signupbtn">
-				SignUp
-			</button>
-		</div>
+	<nav class="nav">
+		<a class="a-tag" href="/">
+			<img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80"
+				height="45"/>
+			<span id="title">Video Summarization & Navigation System</span>
+		</a>
+		<button type="button" id="signupbtn">
+			SignUp
+		</button>
 	</nav>
 	<div id="signuploginform"></div>
 	<div id="hero-sec">

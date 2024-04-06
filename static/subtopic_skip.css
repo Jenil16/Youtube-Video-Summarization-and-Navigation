@@ -1,0 +1,80 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+	background-color: #14181e;
+}
+
+
+/* Navbar CSS */
+.nav {
+	background-color: #222832;
+	padding: 10px 12px;
+	margin: 0;
+	height: 10vh;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav a {
+	text-decoration: none;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav #title {
+	/* color: #a88dff; */
+	color: white;
+	font-weight: bold;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.nav button {
+	font-family: 'Helvetica', serif;
+	width: auto;
+	background-color: #222832;
+	/* background-color: #3a9bac; */
+	border: 3px solid white;
+	outline: none;
+	color: white;
+	padding: 6px 12px;
+	letter-spacing: .1px;
+	border-radius: 5px;
+	font-size: 1rem;
+	font-weight: 549;
+	transition: all .5s ease;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &:hover,
+    &:focus {
+        color: #14181e;
+		/* background-color: #a88dff; */
+		background-color: #3fb1c5;
+		/* border-color: #a88dff; */
+		border-color: #3fb1c5;
+    }
+}
+
+/* subtopic-skip */
+#subtopic-skip {
+	padding: 20px 40px;
+}
+
+#subtopic-skip h1 {
+	color: white;
+	margin: 0 0 20px 20px;
+}

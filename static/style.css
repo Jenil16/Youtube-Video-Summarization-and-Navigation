@@ -19,11 +19,62 @@ a {
     }
 }
 
-.navbarName {
-    position: absolute;
-    bottom: 22px;
+/* Navbar CSS */
+.nav {
+	background-color: #222832;
+	padding: 10px 12px;
+	margin: 0;
+	height: 10vh;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
+.nav a {
+	text-decoration: none;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav #title {
+	/* color: #a88dff; */
+	color: white;
+	font-weight: bold;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.nav button {
+	font-family: 'Helvetica', serif;
+	width: auto;
+	background-color: #222832;
+	/* background-color: #3a9bac; */
+	border: 3px solid white;
+	outline: none;
+	color: white;
+	padding: 6px 12px;
+	letter-spacing: .1px;
+	border-radius: 5px;
+	font-size: 1rem;
+	font-weight: 549;
+	transition: all .5s ease;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &:hover,
+    &:focus {
+        color: #14181e;
+		/* background-color: #a88dff; */
+		background-color: #3fb1c5;
+		/* border-color: #a88dff; */
+		border-color: #3fb1c5;
+    }
+}
+
+/* url input */
 .container {
     display: flex;
     margin-top: 3%;
@@ -59,7 +110,6 @@ a {
     font-size: 1.3rem;
     margin-top: 0.75rem;
     font-weight: 549;
-
 }
 .container form button:hover {
     font-size: 1.3rem;
