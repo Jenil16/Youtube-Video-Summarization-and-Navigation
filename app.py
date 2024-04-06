@@ -15,13 +15,16 @@ import nltk
 nltk.download('punkt')
 
 app = Flask(__name__)
-# global video_url   # Initializing the global variable
+
+
+# Initializing the global variable
 output_text = None
 video_url = None
 time = 0
 subtopic = None
 video_id = None
 onComplete = 0
+transcript = None
 
 
 # All the routes are below here
@@ -29,7 +32,6 @@ onComplete = 0
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 
 @app.route('/add_video', methods=['POST'])
@@ -50,10 +52,8 @@ def add_video():
 
         if file_exists_in_folder("./video_audio_files", video_id+".mp4"):
             return render_template('video_page.html', video_url = vurl)
-        
-        
+              
         threading.Thread(target=download_video, args=(video_url, save_path, video_id)).start()
-
         # download_video(video_url, save_path, video_id)
         # video_path = f"{save_path}/{video_file_name}"
         # audio_path = f"{save_path}/{audio_file_name}"
@@ -62,7 +62,6 @@ def add_video():
     else:
         return 'Please enter a valid YouTube video URL.'
     
-
 
 @app.route('/check_download_status')
 def check_download_status():
@@ -75,12 +74,12 @@ def check_download_status():
     return jsonify({'onComplete': onComplete})
 
 
-
 @app.route('/translate', methods=['GET','POST'])
 def translate():
     # global video_url
     global output_text
     global video_id
+    global transcript
  
     if output_text is None:
         transcript = get_transcript(video_id)
@@ -94,6 +93,7 @@ def translate():
 def summary():
     global output_text
     global video_id
+    global transcript
     
     if output_text is None:
         transcript = get_transcript(video_id)
@@ -109,12 +109,15 @@ def summary():
 @app.route('/subtopic_skip', methods=['GET','POST'])
 def subtopic_skip():
     global video_id
+    global transcript
       
     if file_exists_in_folder("./video_audio_files", video_id+".srt"):
         return render_template("subtopic_skip.html")
 
     # Building srt file
-    transcript = get_transcript(video_id)
+    if transcript is None:
+        transcript = get_transcript(video_id)
+        
     subtitles = transcript.export_subtitles_srt()
     f = open("./video_audio_files/"+video_id+".srt", "a")
     f.write(subtitles)
