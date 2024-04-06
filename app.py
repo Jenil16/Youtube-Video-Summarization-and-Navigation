@@ -25,6 +25,7 @@ subtopic = None
 video_id = None
 onComplete = 0
 transcript = None
+subtitles = None
 
 
 # All the routes are below here
@@ -54,9 +55,6 @@ def add_video():
             return render_template('video_page.html', video_url = vurl)
               
         threading.Thread(target=download_video, args=(video_url, save_path, video_id)).start()
-        # download_video(video_url, save_path, video_id)
-        # video_path = f"{save_path}/{video_file_name}"
-        # audio_path = f"{save_path}/{audio_file_name}"
         # convert_video_to_audio(video_path, audio_path)
         return render_template('video_page.html', video_url = vurl)
     else:
@@ -130,11 +128,15 @@ def video_skip():
     global time
     global subtopic
     global video_id
+    global subtitles
     
     # time = 0
-    subtitles = parse_srt("./video_audio_files/"+video_id+".srt")
+    if subtitles is None:
+        subtitles = parse_srt("./video_audio_files/"+video_id+".srt")
+    
     subtopic = request.form['subtopic']
     timestamp = find_subtitle_containing_text(subtitles, subtopic)
+    
     if timestamp is not None:
         time = timestamp
     else:
@@ -142,6 +144,28 @@ def video_skip():
 
     return render_template("video_skip.html", time = time, video_id = video_id)
 
+
+@app.route('/next_timestamp', methods=['POST', 'GET'])
+def next_timestamp():
+    global time
+    global subtopic
+    global video_id
+
+    current_timestamp = time
+    
+    next_timestamp = None
+    for subtitle in subtitles:
+        if subtitle['start'] > current_timestamp and subtopic.lower() in ' '.join(subtitle['text']).lower():
+            next_timestamp = subtitle['start']
+            break
+
+    if next_timestamp is not None:
+        time = next_timestamp
+        
+    else:
+        print('No next timestamp found for the given subtopic.')
+
+    return jsonify({'next_time': time})
 
 
 # All the functions are below here
