@@ -108,9 +108,14 @@ def summary():
 def subtopic_skip():
     global video_id
     global transcript
+    global time
+    global subtopic
+    global subtitles
+
+    # time = 0
       
     if file_exists_in_folder("./video_audio_files", video_id+".srt"):
-        return render_template("subtopic_skip.html")
+        return render_template("subtopic_skip.html", time=time, video_id=video_id)
 
     # Building srt file
     if transcript is None:
@@ -120,7 +125,7 @@ def subtopic_skip():
     f = open("./video_audio_files/"+video_id+".srt", "a")
     f.write(subtitles)
     f.close()
-    return render_template("subtopic_skip.html")
+    return render_template("subtopic_skip.html", time=time, video_id = video_id)
     
 
 @app.route('/video_skip', methods=['POST','GET'])
@@ -130,11 +135,12 @@ def video_skip():
     global video_id
     global subtitles
     
+    data = request.json
     # time = 0
     if subtitles is None:
         subtitles = parse_srt("./video_audio_files/"+video_id+".srt")
     
-    subtopic = request.form['subtopic']
+    subtopic = data['topic']
     timestamp = find_subtitle_containing_text(subtitles, subtopic)
     
     if timestamp is not None:
@@ -142,7 +148,7 @@ def video_skip():
     else:
         print('Subtopic not found in subtitles')
 
-    return render_template("video_skip.html", time = time, video_id = video_id)
+    return jsonify({'time': time})
 
 
 @app.route('/next_timestamp', methods=['POST', 'GET'])
