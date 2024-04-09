@@ -28,9 +28,11 @@
         />
         <span id="title">Video Summarization & Navigation System</span>
       </a>
-      <button type="button" id="signupbtn">SignUp</button>
+      <form action="/login" method="post">
+        <button type="submit" id="signupbtn">SignUp</button>
+      </form>
     </nav>
-    <div id="signuploginform"></div>
+    <!-- <div id="signuploginform"></div> -->
     <div id="hero-sec"></div>
     <div class="mainSection">
       <div class="container">
@@ -53,5 +55,4 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"
   ></script>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </html>

@@ -45,9 +45,28 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('login.html')
+
+
+@app.route('/forgot', methods=['GET', 'POST'])
+def forgot():
+    return render_template('forgot.html')
+
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_password():
+    email = request.form['loginuseremail']
+    password = request.form['loginuserpassword']
+
+    cur = mysql.connection.cursor()
+    cur.execute("UPDATE users SET Password=%s WHERE Email=%s", (password, email))
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('login.html')
+
 
 
 @app.route('/add_info',methods=['GET', 'POST'])
