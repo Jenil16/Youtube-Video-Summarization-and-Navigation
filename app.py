@@ -1,6 +1,7 @@
 # Our Final Year Project
 from flask import Flask, render_template, request
 from flask import Flask, request, jsonify
+from flask_mysqldb import MySQL
 import re
 import os
 import threading
@@ -15,6 +16,15 @@ import nltk
 nltk.download('punkt')
 
 app = Flask(__name__)
+
+#Database configuration's
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'admin'           
+app.config['MYSQL_PASSWORD'] = 'admin'
+app.config['MYSQL_DB'] = 'vsns_db'
+
+#mysql object
+mysql = MySQL(app)
 
 
 # Initializing the global variable
@@ -38,6 +48,39 @@ def index():
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+
+@app.route('/add_info',methods=['GET', 'POST'])
+def add_info():
+
+    username = request.form['username']
+    password = request.form['userpassword']
+    number = request.form['usernumber']
+    email = request.form['useremail']
+
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
+    mysql.connection.commit()
+    cur.close()
+    return render_template('home.html')
+
+@app.route('/verify_info', methods=['GET','POST'])
+def verify_info():
+
+    email = request.form['loginuseremail']
+    password = request.form['loginuserpassword']
+
+    print(email)
+    print(password)
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
+    data = cur.fetchone()
+    cur.close()
+    print(data)
+    if data:
+        return render_template("home.html")
+    else:
+        return render_template("index.html")
 
 
 
