@@ -13,9 +13,34 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lsa import LsaSummarizer
 import math
 import nltk
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+import mysql.connector
+from mysql.connector import errorcode
+
+__cnx = None
+def get_connection():
+    global __cnx
+    if __cnx is None:
+        try:
+            __cnx = mysql.connector.connect(user='root', password='123456789',
+                                            database='details',host='127.0.0.1')
+        except mysql.connector.Error as err:
+                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                    print("Something is wrong with your user name or password")
+                elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                    print("Database does not exist")
+                else:
+                    print(err)
+                    __cnx.close()
+    return __cnx
 nltk.download('punkt')
+connection = get_connection()
 
 app = Flask(__name__)
+
 
 #Database configuration's
 app.config['MYSQL_HOST'] = 'localhost'
@@ -36,6 +61,24 @@ video_id = None
 onComplete = 0
 transcript = None
 subtitles = None
+
+#Setup Server config
+server_host = "smtp.gmail.com"
+server_port = 587
+
+# #Setup Gmail credentials
+my_email = "darshil.coder350@gmail.com"
+my_password = "werc vutc xdxz wrkv"
+
+# #Sender and receiver email
+sender = "darshil.coder350@gmail.com"
+receiver = None
+
+# #Setup Subject and to,from
+msg = MIMEMultipart()
+msg['From'] = sender
+msg['To'] = receiver
+msg['Subject'] = "SignUp Successfull 😄"
 
 
 # All the routes are below here
@@ -76,11 +119,23 @@ def add_info():
     password = request.form['userpassword']
     number = request.form['usernumber']
     email = request.form['useremail']
-
+    receiver = email
+    # cursor = connection.cursor()
+    # query = ('INSERT INTO user_details(name,number,email,password) VALUES(%s,%s,%s,%s)')
+    # data = (username,password,email,password)
+    # cursor.execute(query,data)
+    # connection.commit()
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
     mysql.connection.commit()
     cur.close()
+    body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
+    msg.attach(MIMEText(body,'plain'))
+    with smtplib.SMTP(server_host,server_port) as server_connection:
+        server_connection.starttls()
+        server_connection.login(user=my_email,password=my_password)
+        text = msg.as_string()
+        server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
     return render_template('home.html')
 
 @app.route('/verify_info', methods=['GET','POST'])
