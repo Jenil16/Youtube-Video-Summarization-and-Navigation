@@ -109,6 +109,17 @@ body {
 	box-shadow: none;
 }
 
+#container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#userImg {
+    width: 3rem;
+    height: 3rem;
+}
+
 /* transcript Section */
 
 #transcript {

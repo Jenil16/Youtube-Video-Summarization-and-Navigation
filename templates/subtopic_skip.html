@@ -24,11 +24,15 @@
 					About
 				</button>
 			</form>
-			<form action="/login">
+			<!-- <form action="/login">
 				<button type="submit" id="signupbtn">
 					SignUp
 				</button>
-			</form>
+			</form> -->
+			<div class="container" id="container">
+				<img src="{{ url_for('static', filename='user2.png')}}" alt="" srcset="" id="userImg">
+				<!-- <span>{{username}}</span> -->
+			</div>
 		</div>
 	</nav>
 	<section id="subtopic-skip">
@@ -43,7 +47,7 @@
 			<div class="subtopic-search">
 				<label for="subtopic">Enter Subtopic:</label>
 				<input type="text" id="subtopic" name="subtopic">
-				<button id="submit" onclick="videoSkip()">Submit</button>
+				<button id="submit" onclick="videoSkip()">Skip</button>
 			</div>
 
 		</div>

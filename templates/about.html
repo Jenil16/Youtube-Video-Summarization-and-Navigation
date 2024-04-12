@@ -1,153 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='about.css') }}"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>index</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}" />
-	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+  <body>
+    <nav class="nav">
+      <a class="a-tag" href="/">
+        <img
+          src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}"
+          alt="Logo"
+          width="80"
+          height="45"
+        />
+        <span id="title"
+          >Video <span id="summary">Summarization </span>&
+          <span id="navi">Navigation </span>System</span
+        >
+      </a>
+      <div id="button">
+        <form action="/about">
+          <button type="submit" id="aboutbtn">About</button>
+        </form>
+        <form action="/login">
+          <button type="submit" id="signupbtn">SignUp</button>
+        </form>
+      </div>
+    </nav>
 
-<body>
-	<nav class="nav">
-		<a class="a-tag" href="/">
-			<img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80"
-				height="45" />
-			<span id="title">Video <span id="summary">Summarization </span>& <span id="navi">Navigation
-				</span>System</span>
-		</a>
-		<div id="button">
-			<form action="/about">
-				<button type="submit" id="aboutbtn">
-					About
-				</button>
-			</form>
-			<form action="/login">
-				<button type="submit" id="signupbtn">
-					SignUp
-				</button>
-			</form>
-		</div>
-	</nav>
+    <section class="about-project">
+      <h1>Know Our Project...</h1>
+      <div class="about-container">
+        <h3>Transcription Technology:</h3>
+        <p>
+          In response to the challenge of sifting through lengthy YouTube
+          tutorials, our platform integrates cutting-edge transcription
+          technology. By converting spoken words into searchable text, users
+          gain unprecedented access to the contents of these videos. No longer
+          constrained by the limitations of traditional video navigation,
+          learners can now easily locate and review specific topics of interest
+          within tutorials, enhancing the efficiency and effectiveness of their
+          learning experience.
+        </p>
+        <h3>Subtopic Navigation:</h3>
+        <p>
+          Navigating through the intricacies of complex tutorials is made
+          effortless with our platform's subtopic navigation feature. Leveraging
+          timestamp-based functionality, users can seamlessly skip to specific
+          subtopics within videos. This streamlines the learning process,
+          allowing learners to delve directly into the content that is most
+          relevant to their needs. Whether mastering a particular skill or
+          understanding a specific concept, our platform empowers users to
+          navigate the vast landscape of online learning with ease.
+        </p>
+        <h3>Summarization Tool:</h3>
+        <p>
+          Recognizing the need for concise and accessible learning resources,
+          our platform offers a comprehensive summarization tool. Through this
+          feature, lengthy tutorials are condensed into succinct summaries,
+          providing users with quick overviews of key points covered in the
+          video. This facilitates rapid comprehension and review, enabling
+          learners to grasp essential concepts efficiently. With our
+          summarization tool, learners can extract maximum value from tutorials
+          in minimal time, optimizing their learning journey.
+        </p>
+        <h3>Enhanced Accessibility:</h3>
+        <p>
+          At the core of our platform lies a commitment to enhancing
+          accessibility and inclusivity in online learning. Featuring an
+          intuitive interface and advanced search capabilities, our platform
+          caters to users of all backgrounds and skill levels. Whether a novice
+          learner or an experienced professional, everyone can benefit from our
+          platform's user-friendly design and robust functionality. By breaking
+          down barriers to learning, we aim to foster a diverse and inclusive
+          learning community, where everyone has the opportunity to thrive and
+          succeed.
+        </p>
+      </div>
+    </section>
+    <section class="about-team">
+      <h1>Know Our Team...</h1>
+      <div class="profile-cards">
+        <div class="profile-card">
+          <div class="image">
+            <img
+              src="{{ url_for('static', filename='jenil.jpeg')}}"
+              alt="Profile-Image"
+              class="profile-img"
+            />
+          </div>
 
-	<section class="about-project">
-		<h1>Know Our Project...</h1>
-		<div class="about-container">
-			<h3>Transcription Technology:</h3>
-			<p>In response to the challenge of sifting through lengthy YouTube tutorials, our platform integrates
-				cutting-edge transcription technology. By converting spoken words into searchable text, users gain
-				unprecedented access to the contents of these videos. No longer constrained by the limitations of
-				traditional video navigation, learners can now easily locate and review specific topics of interest
-				within tutorials, enhancing the efficiency and effectiveness of their learning experience.</p>
-			<h3>Subtopic Navigation:</h3>
-			<p>Navigating through the intricacies of complex tutorials is made effortless with our platform's subtopic
-				navigation feature. Leveraging timestamp-based functionality, users can seamlessly skip to specific
-				subtopics within videos. This streamlines the learning process, allowing learners to delve directly into
-				the content that is most relevant to their needs. Whether mastering a particular skill or understanding
-				a specific concept, our platform empowers users to navigate the vast landscape of online learning with
-				ease.</p>
-			<h3>Summarization Tool:</h3>
-			<p>Recognizing the need for concise and accessible learning resources, our platform offers a comprehensive
-				summarization tool. Through this feature, lengthy tutorials are condensed into succinct summaries,
-				providing users with quick overviews of key points covered in the video. This facilitates rapid
-				comprehension and review, enabling learners to grasp essential concepts efficiently. With our
-				summarization tool, learners can extract maximum value from tutorials in minimal time, optimizing their
-				learning journey.</p>
-			<h3>Enhanced Accessibility:</h3>
-			<p>At the core of our platform lies a commitment to enhancing accessibility and inclusivity in online
-				learning. Featuring an intuitive interface and advanced search capabilities, our platform caters to
-				users of all backgrounds and skill levels. Whether a novice learner or an experienced professional,
-				everyone can benefit from our platform's user-friendly design and robust functionality. By breaking down
-				barriers to learning, we aim to foster a diverse and inclusive learning community, where everyone has
-				the opportunity to thrive and succeed.</p>
-		</div>
-	</section>
-	<section class="about-team">
-		<h1>Know Our Team...</h1>
-		<div class="profile-cards">
+          <div class="text-data">
+            <span class="name">Jenil</span>
+            <span class="job">Student & Python Developer</span>
+          </div>
 
-			<div class="profile-card">
-				<div class="image">
-					<img src="myself.jfif" alt="Profile-Image" class="profile-img">
-				</div>
+          <div class="media-buttons">
+            <a
+              href="https://github.com/Jenil16/"
+              style="background: black"
+              class="link"
+            >
+              <i class="bx bxl-github"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/jenil.patel_16/"
+              style="background: #e1306c"
+              class="link"
+            >
+              <i class="bx bxl-instagram"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jenil16/"
+              style="background: #0077b5"
+              class="link"
+            >
+              <i class="bx bxl-linkedin-square"></i>
+            </a>
+            <a
+              href="https://twitter.com/048Jenil"
+              style="background: #1da1f2"
+              class="link"
+            >
+              <i class="bx bxl-twitter"></i>
+            </a>
+          </div>
+        </div>
 
-				<div class="text-data">
-					<span class="name">Jenil</span>
-					<span class="job">Student & Gate Aspirants</span>
-				</div>
+        <div class="profile-card">
+          <div class="image">
+            <img
+              src="{{ url_for('static', filename='darshil_img.jpeg')}}"
+              alt="Profile-Image"
+              class="profile-img"
+            />
+          </div>
 
-				<div class="media-buttons">
-					<a href="#" style="background: black;" class="link">
-						<i class='bx bxl-github'></i>
-					</a>
-					<a href="#" style="background: #e1306c;" class="link">
-						<i class='bx bxl-instagram'></i>
-					</a>
-					<a href="#" style="background: #0077b5;" class="link">
-						<i class='bx bxl-linkedin-square'></i>
-					</a>
-					<a href="#" style="background: #1da1f2;" class="link">
-						<i class='bx bxl-twitter'></i>
-					</a>
-				</div>
-			</div>
+          <div class="text-data">
+            <span class="name">Darshil</span>
+            <span class="job">Student & FullStack Developer</span>
+          </div>
 
-			<div class="profile-card">
-				<div class="image">
-					<img src="{{ url_for('static', filename='darshil_img.jpeg')}}" alt="Profile-Image"
-						class="profile-img">
-				</div>
+          <div class="media-buttons">
+            <a
+              href="https://github.com/DarshilTheCoder"
+              style="background: black"
+              class="link"
+            >
+              <i class="bx bxl-github"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/darshilparikh2002/"
+              style="background: #e1306c"
+              class="link"
+            >
+              <i class="bx bxl-instagram"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/darshil-parikh-769406203/"
+              style="background: #0077b5"
+              class="link"
+            >
+              <i class="bx bxl-linkedin-square"></i>
+            </a>
+            <a
+              href="https://twitter.com/DarshilParikh07"
+              style="background: #1da1f2"
+              class="link"
+            >
+              <i class="bx bxl-twitter"></i>
+            </a>
+          </div>
+        </div>
 
-				<div class="text-data">
-					<span class="name">Darshil</span>
-					<span class="job">Student & Python Developer</span>
-				</div>
+        <div class="profile-card">
+          <div class="image">
+            <img src="myself.jfif" alt="Profile-Image" class="profile-img" />
+          </div>
 
-				<div class="media-buttons">
-					<a href="https://github.com/DarshilTheCoder" style="background: black;" class="link">
-						<i class='bx bxl-github'></i>
-					</a>
-					<a href="https://www.instagram.com/darshilparikh2002/" style="background: #e1306c;" class="link">
-						<i class='bx bxl-instagram'></i>
-					</a>
-					<a href="https://www.linkedin.com/in/darshil-parikh-769406203/" style="background: #0077b5;"
-						class="link">
-						<i class='bx bxl-linkedin-square'></i>
-					</a>
-					<a href="https://twitter.com/DarshilParikh07" style="background: #1da1f2;" class="link">
-						<i class='bx bxl-twitter'></i>
-					</a>
-				</div>
-			</div>
+          <div class="text-data">
+            <span class="name">Vedant</span>
+            <span class="job">Student & Frontend Developer</span>
+          </div>
 
-			<div class="profile-card">
-				<div class="image">
-					<img src="myself.jfif" alt="Profile-Image" class="profile-img">
-				</div>
-
-				<div class="text-data">
-					<span class="name">Vedant</span>
-					<span class="job">Student & Gate Aspirants</span>
-				</div>
-
-				<div class="media-buttons">
-					<a href="#" style="background: black;" class="link">
-						<i class='bx bxl-github'></i>
-					</a>
-					<a href="#" style="background: #e1306c;" class="link">
-						<i class='bx bxl-instagram'></i>
-					</a>
-					<a href="#" style="background: #0077b5;" class="link">
-						<i class='bx bxl-linkedin-square'></i>
-					</a>
-					<a href="#" style="background: #1da1f2;" class="link">
-						<i class='bx bxl-twitter'></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</section>
-</body>
-
+          <div class="media-buttons">
+            <a href="#" style="background: black" class="link">
+              <i class="bx bxl-github"></i>
+            </a>
+            <a href="#" style="background: #e1306c" class="link">
+              <i class="bx bxl-instagram"></i>
+            </a>
+            <a href="#" style="background: #0077b5" class="link">
+              <i class="bx bxl-linkedin-square"></i>
+            </a>
+            <a href="#" style="background: #1da1f2" class="link">
+              <i class="bx bxl-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
