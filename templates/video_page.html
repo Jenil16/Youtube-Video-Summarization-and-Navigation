@@ -42,7 +42,7 @@
 			<div id="spinner" class="spinner"></div>
 		</div>
 
-		<div class="form_buttons">
+		<div class="form_buttons" id="form_buttons">
 
 			<!-- Translate buttons (initially hidden) -->
 			<form action="/translate" method="post">
@@ -67,18 +67,16 @@
 			.then((data) => {
 				if (data.onComplete) {
 					// Hide loading spinner
-					document.querySelector(".spinner-container").style.display =
-						"none";
+					document.querySelector(".spinner-container").style.display = "none";
 					// Show translate buttons
-					document.getElementById("translateButton").style.display =
-						"inline-block";
-					document.getElementById("summaryButton").style.display =
-						"inline-block";
-					document.getElementById("subtopicSkipButton").style.display =
-						"inline-block";
+					document.getElementById("translateButton").style.display = "inline-block";
+					document.getElementById("summaryButton").style.display = "inline-block";
+					document.getElementById("subtopicSkipButton").style.display = "inline-block";
+					document.getElementById('form_buttons').style.display = "flex"
 				} else {
 					// Download still in progress, check again after 1 second
 					setTimeout(checkDownloadStatus, 1000);
+					document.getElementById('form_buttons').style.display = "none"
 				}
 			})
 			.catch((error) => {
