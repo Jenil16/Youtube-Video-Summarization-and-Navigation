@@ -1,86 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	box-sizing: inherit;
 }
 
 body {
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #14181e;
-}
-
-a {
-    text-decoration: none;
-    color: #1ab188;
-    transition: .5s ease;
-
-    &:hover {
-        color: darken(#1ab188, 5%);
-    }
-}
-
-/* Navbar CSS */
-.nav {
-	background-color: #222832;
-	padding: 10px 12px;
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	background-color: #14181e;
 	margin: 0;
-	height: 10vh;
-	color: white;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	padding: 0;
 }
-
-.nav a {
-	text-decoration: none;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.nav #title {
-	/* color: #a88dff; */
-	color: white;
-	font-weight: bold;
-	font-size: 1.5rem;
-	text-align: center;
-}
-
-.nav button {
-	font-family: 'Helvetica', serif;
-	width: auto;
-	background-color: #222832;
-	/* background-color: #3a9bac; */
-	border: 3px solid white;
-	outline: none;
-	color: white;
-	padding: 6px 12px;
-	letter-spacing: .1px;
-	border-radius: 5px;
-	font-size: 1rem;
-	font-weight: 549;
-	transition: all .5s ease;
-    -webkit-appearance: none;
-    appearance: none;
-
-    &:hover,
-    &:focus {
-        color: #14181e;
-		/* background-color: #a88dff; */
-		background-color: #3fb1c5;
-		/* border-color: #a88dff; */
-		border-color: #3fb1c5;
-    }
-}
-
-.navbar {
-    width: 100%;
-    height: 10vh;
-    background-color: #222832;
-    color: white;
-}
-
 .signup-login-form {
     background: #2F3D40;
     padding: 40px;

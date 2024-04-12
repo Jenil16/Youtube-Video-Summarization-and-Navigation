@@ -19,19 +19,24 @@
 
   <body>
     <nav class="nav">
-      <a class="a-tag" href="/">
-        <img
-          src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}"
-          alt="Logo"
-          width="80"
-          height="45"
-        />
-        <span id="title">Video Summarization & Navigation System</span>
-      </a>
-      <form action="/login" method="post">
-        <button type="submit" id="signupbtn">SignUp</button>
-      </form>
-    </nav>
+		<a class="a-tag" href="/">
+			<img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80"
+				height="45" />
+				<span id="title">Video <span id="summary">Summarization </span>& <span id="navi">Navigation </span>System</span>
+		</a>
+		<div id="button">
+			<form action="/about">
+				<button type="submit" id="aboutbtn">
+					About
+				</button>
+			</form>
+			<form action="/login">
+				<button type="submit" id="signupbtn">
+					SignUp
+				</button>
+			</form>
+		</div>
+	</nav>
     <!-- <div id="signuploginform"></div> -->
     <div id="hero-sec"></div>
     <div class="mainSection">
@@ -45,7 +50,7 @@
             class=""
             placeholder="Enter Video URL"
           />
-          <button type="submit" class="generatebtn">Generate</button>
+          <button type="submit" class="glow-on-hover">Generate</button>
         </form>
       </div>
     </div>

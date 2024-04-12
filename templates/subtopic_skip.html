@@ -14,26 +14,39 @@
 	<nav class="nav">
 		<a class="a-tag" href="/">
 			<img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80"
-				height="45"/>
-			<span id="title">Video Summarization & Navigation System</span>
+				height="45" />
+			<span id="title">Video <span id="summary">Summarization </span>& <span id="navi">Navigation
+				</span>System</span>
 		</a>
-		<button type="button" id="signupbtn">
-			SignUp
-		</button>
+		<div id="button">
+			<form action="/about">
+				<button type="submit" id="aboutbtn">
+					About
+				</button>
+			</form>
+			<form action="/login">
+				<button type="submit" id="signupbtn">
+					SignUp
+				</button>
+			</form>
+		</div>
 	</nav>
-	<section id="subtopic-skip">		
+	<section id="subtopic-skip">
 		<h1>Subtopic-based skip</h1>
+		<div class="subtopic-container">
 
-		<div id="player"></div>
-      	<br /><br />
+			<div class="player">
+				<div id="player"></div>
+				<button id="next-button" onclick="skipToNext();">Next</button>
+			</div>
 
-      	<button id="next-button" onclick="skipToNext();">Next</button>
-      	<br /><br />
-      
-      	<label for="subtopic" style="color: white">Enter Subtopic:</label><br />
-      	<input type="text" id="subtopic" name="subtopic" /><br /><br />
-      	<button id="submit" onclick="videoSkip()">Submit</button>
-		
+			<div class="subtopic-search">
+				<label for="subtopic">Enter Subtopic:</label>
+				<input type="text" id="subtopic" name="subtopic">
+				<button id="submit" onclick="videoSkip()">Submit</button>
+			</div>
+
+		</div>
 	</section>
 
 
@@ -41,98 +54,98 @@
 		// Loading the YouTube IFrame Player API asynchronously
 		var time_str = "{{time}}";
 		var time = parseInt(time_str);
-  
+
 		var tag = document.createElement("script");
 		tag.src = "https://www.youtube.com/iframe_api";
 		var firstScriptTag = document.getElementsByTagName("script")[0];
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  
+
 		// YouTube player object
 		var player;
-  
+
 		// Function called when the API is ready
 		function onYouTubeIframeAPIReady() {
-		  // Create a new YouTube player
-		  player = new YT.Player("player", {
-			height: "360",
-			width: "640",
-			videoId: "{{video_id}}",
-			playerVars: {
-				autoplay: 0, // Set autoplay to false
-            	rel: 0, // Disable related videos
-			},
-			events: {
-			  onReady: onPlayerReady,
-			},
-		  });
+			// Create a new YouTube player
+			player = new YT.Player("player", {
+				height: "360",
+				width: "640",
+				videoId: "{{video_id}}",
+				playerVars: {
+					autoplay: 0, // Set autoplay to false
+					rel: 0, // Disable related videos
+				},
+				events: {
+					onReady: onPlayerReady,
+				},
+			});
 		}
-  
+
 		// Function called when the player is ready
 		function onPlayerReady(event) {
-		  // Skip to the desired time (in seconds)
-		  player.seekTo(time);
+			// Skip to the desired time (in seconds)
+			player.seekTo(time);
 		}
-		
+
 		// Function to skip to the subtopic provided on clicking submit button 
 		function videoSkip() {
-		  var subtopic = document.getElementById("subtopic").value;
-		  // Fetch the next timestamp from the server using AJAX
-		  fetch("/video_skip", {
-			method: "POST", // Use POST method to send data in request body
-			headers: {
-			  "Content-Type": "application/json", // Specify content type as JSON
-			},
-			body: JSON.stringify({
-			  // Convert data to JSON format
-			  topic: subtopic,
-			}),
-		  })
-			.then((response) => {
-			  if (!response.ok) {
-				throw new Error("Network response was not ok");
-			  }
-			  return response.json();
+			var subtopic = document.getElementById("subtopic").value;
+			// Fetch the next timestamp from the server using AJAX
+			fetch("/video_skip", {
+				method: "POST", // Use POST method to send data in request body
+				headers: {
+					"Content-Type": "application/json", // Specify content type as JSON
+				},
+				body: JSON.stringify({
+					// Convert data to JSON format
+					topic: subtopic,
+				}),
 			})
-			.then((data) => {
-			  // Update the 'time' variable and seek to the next timestamp
-			  var time = data.time;
-			  if (!isNaN(time)) {
-				time = parseInt(time);
-				player.seekTo(time);
-			  } else {
-				console.error("Invalid time format:", time);
-			  }
-			})
-			.catch((error) => {
-			  console.error("Error fetching next timestamp:", error);
-			});
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error("Network response was not ok");
+					}
+					return response.json();
+				})
+				.then((data) => {
+					// Update the 'time' variable and seek to the next timestamp
+					var time = data.time;
+					if (!isNaN(time)) {
+						time = parseInt(time);
+						player.seekTo(time);
+					} else {
+						console.error("Invalid time format:", time);
+					}
+				})
+				.catch((error) => {
+					console.error("Error fetching next timestamp:", error);
+				});
 		}
-  
+
 		// Function to skip to the next timestamp on clicking Next button
 		function skipToNext() {
-		  // Fetch the next timestamp from the server using AJAX
-		  fetch("/next_timestamp")
-			.then((response) => {
-			  if (!response.ok) {
-				throw new Error("Network response was not ok");
-			  }
-			  return response.json();
-			})
-			.then((data) => {
-			  // Update the 'time' variable and seek to the next timestamp
-			  var nextTime = data.next_time;
-			  if (!isNaN(nextTime)) {
-				nextTime = parseInt(nextTime);
-				player.seekTo(nextTime);
-			  } else {
-				console.error("Invalid time format:", nextTime);
-			  }
-			})
-			.catch((error) => {
-			  console.error("Error fetching next timestamp:", error);
-			});
+			// Fetch the next timestamp from the server using AJAX
+			fetch("/next_timestamp")
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error("Network response was not ok");
+					}
+					return response.json();
+				})
+				.then((data) => {
+					// Update the 'time' variable and seek to the next timestamp
+					var nextTime = data.next_time;
+					if (!isNaN(nextTime)) {
+						nextTime = parseInt(nextTime);
+						player.seekTo(nextTime);
+					} else {
+						console.error("Invalid time format:", nextTime);
+					}
+				})
+				.catch((error) => {
+					console.error("Error fetching next timestamp:", error);
+				});
 		}
-	  </script>
+	</script>
 
 
 </body>

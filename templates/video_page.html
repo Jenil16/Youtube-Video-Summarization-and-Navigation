@@ -14,12 +14,22 @@
 	<nav class="nav">
 		<a class="a-tag" href="/">
 			<img src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80"
-				height="45"/>
-			<span id="title">Video Summarization & Navigation System</span>
+				height="45" />
+			<span id="title">Video <span id="summary">Summarization </span>& <span id="navi">Navigation
+				</span>System</span>
 		</a>
-		<button type="button" id="signupbtn">
-			SignUp
-		</button>
+		<div id="button">
+			<form action="/about">
+				<button type="submit" id="aboutbtn">
+					About
+				</button>
+			</form>
+			<form action="/login">
+				<button type="submit" id="signupbtn">
+					SignUp
+				</button>
+			</form>
+		</div>
 	</nav>
 	<section id="videoframe">
 		<iframe src="{{video_url}}?autoplay=0&rel=0" frameborder="0" allowfullscreen title="videoFrame"></iframe>
