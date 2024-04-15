@@ -148,7 +148,7 @@ body {
 
 /* Animation */
 .anim-typewriter {
-	animation: typewriter 4s steps(38) 1s 1 normal both,
+	animation: typewriter 4s steps(38) 0s 1 normal both,
 		blinkTextCursor 500ms steps(38) infinite normal;
 }
 

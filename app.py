@@ -17,40 +17,40 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# import mysql.connector
-# from mysql.connector import errorcode
+import mysql.connector
+from mysql.connector import errorcode
 
-# __cnx = None
-# def get_connection():
-#     global __cnx
-#     if __cnx is None:
-#         try:
-#             __cnx = mysql.connector.connect(user='root', password='123456789',
-#                                             database='details',host='127.0.0.1')
-#         except mysql.connector.Error as err:
-#                 if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#                     print("Something is wrong with your user name or password")
-#                 elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#                     print("Database does not exist")
-#                 else:
-#                     print(err)
-#                     __cnx.close()
-#     return __cnx
-# connection = get_connection()
+__cnx = None
+def get_connection():
+    global __cnx
+    if __cnx is None:
+        try:
+            __cnx = mysql.connector.connect(user='root', password='123456789',
+                                            database='details',host='127.0.0.1')
+        except mysql.connector.Error as err:
+                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                    print("Something is wrong with your user name or password")
+                elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                    print("Database does not exist")
+                else:
+                    print(err)
+                    __cnx.close()
+    return __cnx
+connection = get_connection()
 
 nltk.download('punkt')
 
 app = Flask(__name__)
 
 
-#Database configuration's
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'admin'           
-app.config['MYSQL_PASSWORD'] = 'admin'
-app.config['MYSQL_DB'] = 'vsns_db'
+# #Database configuration's
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'admin'           
+# app.config['MYSQL_PASSWORD'] = 'admin'
+# app.config['MYSQL_DB'] = 'vsns_db'
 
-#mysql object
-mysql = MySQL(app)
+# #mysql object
+# mysql = MySQL(app)
 
 
 # Initializing the global variable
@@ -65,22 +65,22 @@ subtitles = None
 
 
 #Setup Server config
-# server_host = "smtp.gmail.com"
-# server_port = 587
+server_host = "smtp.gmail.com"
+server_port = 587
 
-# # #Setup Gmail credentials
-# my_email = ""
-# my_password = ""
+#Setup Gmail credentials
+my_email = ""
+my_password = ""
 
-# # #Sender and receiver email
-# sender = ""
-# receiver = None
+#Sender and receiver email
+sender = ""
+receiver = None
 
-# # #Setup Subject and to,from
-# msg = MIMEMultipart()
-# msg['From'] = sender
-# msg['To'] = receiver
-# msg['Subject'] = "SignUp Successfull 😄"
+#Setup Subject and to,from
+msg = MIMEMultipart()
+msg['From'] = sender
+msg['To'] = receiver
+msg['Subject'] = "SignUp Successfull 😄"
 
 
 # All the routes are below here
@@ -130,23 +130,25 @@ def add_info():
     email = request.form['useremail']
     receiver = email
     
-    cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
-    mysql.connection.commit()
-    cur.close()
-    # cursor = connection.cursor()
-    # query = ('INSERT INTO user_details(name,number,email,password) VALUES(%s,%s,%s,%s)')
-    # data = (username,password,number,email)
-    # cursor.execute(query,data)
-    # connection.commit()
+    # cur = mysql.connection.cursor()
+    # cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
+    # mysql.connection.commit()
+    # cur.close()
+
+    cursor = connection.cursor()
+    query = ('INSERT INTO user_details(name,number,email,password) VALUES(%s,%s,%s,%s)')
+    data = (username,password,number,email)
+    cursor.execute(query,data)
+    connection.commit()
+
     signedup = True
-    # body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
-    # msg.attach(MIMEText(body,'plain'))
-    # with smtplib.SMTP(server_host,server_port) as server_connection:
-    #     server_connection.starttls()
-    #     server_connection.login(user=my_email,password=my_password)
-    #     text = msg.as_string()
-    #     server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
+    body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
+    msg.attach(MIMEText(body,'plain'))
+    with smtplib.SMTP(server_host,server_port) as server_connection:
+        server_connection.starttls()
+        server_connection.login(user=my_email,password=my_password)
+        text = msg.as_string()
+        server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
     return render_template('home.html', signedup = signedup,username=username)
 
 @app.route('/verify_info', methods=['GET','POST'])
@@ -155,18 +157,19 @@ def verify_info():
     email = request.form['loginuseremail']
     password = request.form['loginuserpassword']
 
-    print(email)
-    print(password)
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
-    data = cur.fetchone()
-    cur.close()
-    # cursor = connection.cursor()
-    # query = ('SELECT * FROM users WHERE Email = %s AND Password = %s')
-    # data = (email,password)
-    # cursor.execute(query,data)
-    # data = cursor.fetchone()
-    # cursor.close()
+    # cur = mysql.connection.cursor()
+    # cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
+    # data = cur.fetchone()
+    # cur.close()
+
+
+    cursor = connection.cursor()
+    query = ('SELECT * FROM users WHERE Email = %s AND Password = %s')
+    data = (email,password)
+    cursor.execute(query,data)
+    data = cursor.fetchone()
+    cursor.close()
+
     print(data)
     if data:
         verified = True
