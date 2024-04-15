@@ -172,7 +172,7 @@ def verify_info():
         verified = True
         return render_template("home.html", verified = verified)
     else:
-        return render_template("index.html")
+        return render_template("index.html",verified =verified)
 
 
 

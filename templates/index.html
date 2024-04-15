@@ -102,13 +102,21 @@
 		</form>
 	</section>
 	<script>
+		let verified = "{{verified}}"
+		console.log(verified)
 		let loginUnSuccessMsg = document.getElementById('loginUnSuccessMsg')
-		setTimeout(() => {
-			loginUnSuccessMsg.style.display = 'block';
+		if (verified == 'False') {
 			setTimeout(() => {
-				loginUnSuccessMsg.style.display = 'none';
-			}, 3000); // Hide the message after 3 seconds
-		}, 3000);
+				loginUnSuccessMsg.style.display = 'block';
+				setTimeout(() => {
+					loginUnSuccessMsg.style.display = 'none';
+				}, 3000); // Hide the message after 3 seconds
+			}, 3000);
+		}
+		else {
+			loginUnSuccessMsg.style.display = 'none';
+
+		}
 		const features = document.querySelector('#features');
 		const bulb = document.querySelector('#bulb');
 
