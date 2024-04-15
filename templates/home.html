@@ -24,6 +24,9 @@
           About
         </button>
       </form>
+      <div id="loginSuccessMsg" class="alert alert-success">
+        You're Logged in successfully
+      </div>
       <!-- <form action="/login">
         <button type="submit" id="signupbtn">
           SignUp
@@ -52,13 +55,22 @@
     console.log(verified)
     let signedup = '{{signedup}}'
     console.log(signedup)
-    if (signedup == 'True') {
-      document.getElementById('signupbtn').style.display = 'none'
-      document.getElementById('userImg').style.display = 'block'
-    }
-    else {
-      document.getElementById('signupbtn').style.display = 'block'
-      document.getElementById('userImg').style.display = 'none'
+    let loginSuccessMsg = document.getElementById('loginSuccessMsg')
+    // if (signedup == 'True') {
+    //   document.getElementById('signupbtn').style.display = 'none'
+    //   document.getElementById('userImg').style.display = 'block'
+    // }
+    // else {
+    //   document.getElementById('signupbtn').style.display = 'block'
+    //   document.getElementById('userImg').style.display = 'none'
+    // }
+    if (verified == 'True') {
+      setTimeout(() => {
+        loginSuccessMsg.style.display = 'block';
+        setTimeout(() => {
+          loginSuccessMsg.style.display = 'none';
+        }, 3000); // Hide the message after 3 seconds
+      }, 3000);
     }
   </script>
 </body>

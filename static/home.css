@@ -127,6 +127,12 @@ a {
     box-shadow: none;
 }
 
+#loginSuccessMsg {
+    position: absolute;
+    top: 5.5rem;
+    left: 79rem;
+}
+
 #container {
     display: flex;
     justify-content: end;
