@@ -24,6 +24,9 @@
           About
         </button>
       </form>
+      <div id="loginSuccessMsg" class="alert alert-success">
+        You're Logged in successfully!
+      </div>
       <!-- <form action="/login">
         <button type="submit" id="signupbtn">
           SignUp
@@ -52,14 +55,25 @@
     console.log(verified)
     let signedup = '{{signedup}}'
     console.log(signedup)
-    if (signedup == 'True') {
-      document.getElementById('signupbtn').style.display = 'none'
-      document.getElementById('userImg').style.display = 'block'
+    // if (signedup == 'True') {
+    //   document.getElementById('signupbtn').style.display = 'none'
+    //   document.getElementById('userImg').style.display = 'block'
+    // }
+    // else {
+    //   document.getElementById('signupbtn').style.display = 'block'
+    //   document.getElementById('userImg').style.display = 'none'
+      
+    // }
+    let loginSuccessMsg = document.getElementById('loginSuccessMsg')    
+    if (verified == 'True') {
+      setTimeout(() => {
+        loginSuccessMsg.style.display = 'block';
+        setTimeout(() => {
+          loginSuccessMsg.style.display = 'none';
+        }, 3000); // Hide the message after 3 seconds
+      }, 3000);
     }
-    else {
-      document.getElementById('signupbtn').style.display = 'block'
-      document.getElementById('userImg').style.display = 'none'
-    }
+  
   </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

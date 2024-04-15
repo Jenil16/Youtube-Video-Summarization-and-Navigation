@@ -110,6 +110,12 @@ body {
 	box-shadow: none;
 }
 
+#loginUnSuccessMsg {
+    position: absolute;
+    top: 5.5rem;
+    left: 73.5rem;
+}
+
 /* hero section - typewriter effect */
 #hero {
 	height: 90vh;
