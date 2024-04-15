@@ -64,23 +64,23 @@ transcript = None
 subtitles = None
 
 
-#Setup Server config
-server_host = "smtp.gmail.com"
-server_port = 587
+# #Setup Server config
+# server_host = "smtp.gmail.com"
+# server_port = 587
 
-#Setup Gmail credentials
-my_email = ""
-my_password = ""
+# #Setup Gmail credentials
+# my_email = ""
+# my_password = ""
 
-#Sender and receiver email
-sender = ""
-receiver = None
+# #Sender and receiver email
+# sender = ""
+# receiver = None
 
-#Setup Subject and to,from
-msg = MIMEMultipart()
-msg['From'] = sender
-msg['To'] = receiver
-msg['Subject'] = "SignUp Successfull 😄"
+# #Setup Subject and to,from
+# msg = MIMEMultipart()
+# msg['From'] = sender
+# msg['To'] = receiver
+# msg['Subject'] = "SignUp Successfull 😄"
 
 
 # All the routes are below here
@@ -142,13 +142,14 @@ def add_info():
     # connection.commit()
 
     signedup = True
-    body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
-    msg.attach(MIMEText(body,'plain'))
-    with smtplib.SMTP(server_host,server_port) as server_connection:
-        server_connection.starttls()
-        server_connection.login(user=my_email,password=my_password)
-        text = msg.as_string()
-        server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
+    
+    # body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
+    # msg.attach(MIMEText(body,'plain'))
+    # with smtplib.SMTP(server_host,server_port) as server_connection:
+    #     server_connection.starttls()
+    #     server_connection.login(user=my_email,password=my_password)
+    #     text = msg.as_string()
+    #     server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
     return render_template('home.html', signedup = signedup,username=username)
 
 @app.route('/verify_info', methods=['GET','POST'])
