@@ -16,7 +16,7 @@ import nltk
 # import smtplib
 # from email.mime.multipart import MIMEMultipart
 # from email.mime.text import MIMEText
-# from email_validator import validate_email, EmailNotValidError
+from email_validator import validate_email, EmailNotValidError
 
 # import mysql.connector
 # from mysql.connector import errorcode
@@ -131,53 +131,72 @@ def add_info():
     email = request.form['useremail']
     receiver = email
     
-    cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
-    mysql.connection.commit()
-    cur.close()
-
-    # cursor = connection.cursor()
-    # query = ('INSERT INTO user_details_new(name,number,email,password) VALUES(%s,%s,%s,%s)')
-    # data = (username,password,number,email)
-    # cursor.execute(query,data)
-    # connection.commit()
-
-    signedup = True
+    try:
+        v = validate_email(email)
+        validated_email = v.email
+        print(validated_email)
+    except EmailNotValidError as e:
+        print('Invalid Email address',e)
+        InvalidEmail = True
+        return render_template('index.html',InvalidEmail= InvalidEmail)
+    else:
     
-    # body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
-    # msg.attach(MIMEText(body,'plain'))
-    # with smtplib.SMTP(server_host,server_port) as server_connection:
-    #     server_connection.starttls()
-    #     server_connection.login(user=my_email,password=my_password)
-    #     text = msg.as_string()
-    #     server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
-    return render_template('home.html', signedup = signedup,username=username)
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
+        mysql.connection.commit()
+        cur.close()
+        # print('another time',validated_email)
+        # cursor = connection.cursor()
+        # query = ('INSERT INTO user_details_new(name,number,email,password) VALUES(%s,%s,%s,%s)')
+        # data = (username,number,validated_email,password)
+        # cursor.execute(query,data)
+        connection.commit()
+
+        signedup = True
+        
+        # body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
+        # msg.attach(MIMEText(body,'plain'))
+        # with smtplib.SMTP(server_host,server_port) as server_connection:
+        #     server_connection.starttls()
+        #     server_connection.login(user=my_email,password=my_password)
+        #     text = msg.as_string()
+        #     server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
+        return render_template('home.html', signedup = signedup,username=username)
 
 @app.route('/verify_info', methods=['GET','POST'])
 def verify_info():
     verified = False
     email = request.form['loginuseremail']
     password = request.form['loginuserpassword']
+    try:
+        v = validate_email(email)
+        validated_email = v.email
+        print(validated_email)
+    except EmailNotValidError as e:
+        print('Invalid Email address',e)
+        InvalidEmail = True
+        return render_template('index.html',InvalidEmail= InvalidEmail)
+    else:
 
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
-    data = cur.fetchone()
-    cur.close()
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
+        data = cur.fetchone()
+        cur.close()
 
 
-    # cursor = connection.cursor()
-    # query = ('SELECT * FROM user_details_new WHERE Email = %s AND Password = %s')
-    # data = (email,password)
-    # cursor.execute(query,data)
-    # data = cursor.fetchone()
-    # cursor.close()
+        # cursor = connection.cursor()
+        # query = ('SELECT * FROM user_details_new WHERE Email = %s AND Password = %s')
+        # data = (email,password)
+        # cursor.execute(query,data)
+        # data = cursor.fetchone()
+        # cursor.close()
 
-    print(data)
-    if data:
-        verified = True
-        return render_template("home.html", verified = verified)
-    else:       
-        return render_template("index.html", verified = verified)
+        print(data)
+        if data:
+            verified = True
+            return render_template("home.html", verified = verified)
+        else:       
+            return render_template("index.html", verified = verified)
 
 
 
@@ -417,4 +436,4 @@ def file_exists_in_folder(folder_path, filename):
 # Main method
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5500)

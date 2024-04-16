@@ -40,6 +40,9 @@
       <div id="loginUnSuccessMsg" class="alert alert-danger">
         No such Data was Found!
       </div>
+      <div id="InvalidEmailAddress" class="alert alert-danger">
+        Entered Invalid Email Address
+      </div>
     </div>
   </nav>
   <section id="hero">
@@ -131,6 +134,7 @@
   </section>
   <script>
     let verified = "{{verified}}"
+    let invalidEmail = "{{InvalidEmail}}"
     const features = document.querySelector("#features");
     const bulb = document.querySelector("#bulb");
 
@@ -149,7 +153,8 @@
     bulb.addEventListener("mouseover", () => {
       bulb.style.background = "url(../static/images/icons8-bulb-on-48.png)";
     });
-
+    console.log(verified)
+    console.log(invalidEmail)
     let loginUnSuccessMsg = document.getElementById('loginUnSuccessMsg')
     if (verified == 'False') {
       setTimeout(() => {
@@ -160,6 +165,17 @@
       }, 3000);
     } else {
       loginUnSuccessMsg.style.display = 'none';
+    }
+    let InvalidEmailAddress = document.getElementById('InvalidEmailAddress')
+    if (InvalidEmailAddress == 'True') {
+      setTimeout(() => {
+        InvalidEmailAddress.style.display = 'none';
+        setTimeout(() => {
+          InvalidEmailAddress.style.display = 'block';
+        }, 3000); // Hide the message after 3 seconds
+      }, 3000);
+    } else {
+      InvalidEmailAddress.style.display = 'none';
     }
   </script>
 </body>

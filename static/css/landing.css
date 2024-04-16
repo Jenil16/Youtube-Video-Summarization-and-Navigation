@@ -132,7 +132,7 @@
  	color: white;
  	padding: 0.5rem;
  	margin: 0;
-	font-size: 1.8rem;
+ 	font-size: 1.8rem;
  }
 
  #hero #typewrite-text {
@@ -231,7 +231,8 @@
  	width: 47px;
  	height: 47px;
  	padding: 0;
- 	background: url(./images/icons8-bulb-off-48.png);
+ 	/* background: url(../images/icons8-bulb-off-48.png); */
+ 	background: url(../images/icons8-bulb-off-48.png);
  	margin-right: 10px;
  }
 
