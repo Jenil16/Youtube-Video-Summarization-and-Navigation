@@ -13,30 +13,31 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lsa import LsaSummarizer
 import math
 import nltk
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+# import smtplib
+# from email.mime.multipart import MIMEMultipart
+# from email.mime.text import MIMEText
+# from email_validator import validate_email, EmailNotValidError
 
-import mysql.connector
-from mysql.connector import errorcode
+# import mysql.connector
+# from mysql.connector import errorcode
 
-__cnx = None
-def get_connection():
-    global __cnx
-    if __cnx is None:
-        try:
-            __cnx = mysql.connector.connect(user='root', password='123456789',
-                                            database='details',host='127.0.0.1')
-        except mysql.connector.Error as err:
-                if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                    print("Something is wrong with your user name or password")
-                elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                    print("Database does not exist")
-                else:
-                    print(err)
-                    __cnx.close()
-    return __cnx
-connection = get_connection()
+# __cnx = None
+# def get_connection():
+#     global __cnx
+#     if __cnx is None:
+#         try:
+#             __cnx = mysql.connector.connect(user='root', password='123456789',
+#                                             database='details',host='127.0.0.1')
+#         except mysql.connector.Error as err:
+#                 if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+#                     print("Something is wrong with your user name or password")
+#                 elif err.errno == errorcode.ER_BAD_DB_ERROR:
+#                     print("Database does not exist")
+#                 else:
+#                     print(err)
+#                     __cnx.close()
+#     return __cnx
+# connection = get_connection()
 
 nltk.download('punkt')
 
@@ -130,16 +131,16 @@ def add_info():
     email = request.form['useremail']
     receiver = email
     
-    # cur = mysql.connection.cursor()
-    # cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
-    # mysql.connection.commit()
-    # cur.close()
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO users (Username, Password, Mobile_no, Email) VALUES (%s, %s, %s, %s)", (username, password, number, email))
+    mysql.connection.commit()
+    cur.close()
 
-    cursor = connection.cursor()
-    query = ('INSERT INTO user_details_new(name,number,email,password) VALUES(%s,%s,%s,%s)')
-    data = (username,password,number,email)
-    cursor.execute(query,data)
-    connection.commit()
+    # cursor = connection.cursor()
+    # query = ('INSERT INTO user_details_new(name,number,email,password) VALUES(%s,%s,%s,%s)')
+    # data = (username,password,number,email)
+    # cursor.execute(query,data)
+    # connection.commit()
 
     signedup = True
     
@@ -158,18 +159,18 @@ def verify_info():
     email = request.form['loginuseremail']
     password = request.form['loginuserpassword']
 
-    # cur = mysql.connection.cursor()
-    # cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
-    # data = cur.fetchone()
-    # cur.close()
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM users WHERE Email = %s AND Password = %s", (email, password))
+    data = cur.fetchone()
+    cur.close()
 
 
-    cursor = connection.cursor()
-    query = ('SELECT * FROM user_details_new WHERE Email = %s AND Password = %s')
-    data = (email,password)
-    cursor.execute(query,data)
-    data = cursor.fetchone()
-    cursor.close()
+    # cursor = connection.cursor()
+    # query = ('SELECT * FROM user_details_new WHERE Email = %s AND Password = %s')
+    # data = (email,password)
+    # cursor.execute(query,data)
+    # data = cursor.fetchone()
+    # cursor.close()
 
     print(data)
     if data:

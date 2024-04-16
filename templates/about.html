@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>index</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
@@ -135,7 +135,7 @@
 
       <div class="profile-card">
         <div class="image">
-          <img src="" alt="Profile-Image" class="profile-img" />
+          <img src="{{ url_for('static', filename='images/vedant.jpeg')}}" alt="Profile-Image" class="profile-img" />
         </div>
 
         <div class="text-data">
@@ -144,16 +144,16 @@
         </div>
 
         <div class="media-buttons">
-          <a href="#" style="background: black" class="link">
+          <a href="https://github.com/110vedant" style="background: black" class="link">
             <i class="bx bxl-github"></i>
           </a>
           <a href="#" style="background: #e1306c" class="link">
             <i class="bx bxl-instagram"></i>
           </a>
-          <a href="#" style="background: #0077b5" class="link">
+          <a href="https://www.linkedin.com/in/vedant-patel-4a0a181bb/" style="background: #0077b5" class="link">
             <i class="bx bxl-linkedin-square"></i>
           </a>
-          <a href="#" style="background: #1da1f2" class="link">
+          <a href="https://twitter.com/v3danttwt" style="background: #1da1f2" class="link">
             <i class="bx bxl-twitter"></i>
           </a>
         </div>
