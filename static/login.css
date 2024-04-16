@@ -3,21 +3,22 @@
 *,
 *:before,
 *:after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-	box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-	font-family: "Montserrat", sans-serif;
-	font-optical-sizing: auto;
-	font-style: normal;
-	background-color: #14181e;
-	margin: 0;
-	padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #14181e;
+    margin: 0;
+    padding: 0;
 }
+
 .signup-login-form {
     background: #2F3D40;
     padding: 40px;
@@ -29,6 +30,25 @@ body {
     top: 10%;
     left: 32%;
 }
+
+.toggle-password {
+    cursor: pointer;
+}
+
+#signuppassword {
+    width: 2.25rem;
+    position: absolute;
+    left: 26rem;
+    bottom: .35rem;
+}
+
+#loginpassword {
+    width: 2.25rem;
+    position: absolute;
+    left: 26rem;
+    bottom: 0.35rem;
+}
+
 
 .tab-group {
     list-style: none;

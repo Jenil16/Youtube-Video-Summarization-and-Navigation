@@ -24,20 +24,26 @@
 					<div class="top-row">
 						<div class="field-wrap">
 							<label for="username"> Name<span class="req">*</span> </label>
-							<input type="text" required autocomplete="off" id="username" name="username" />
+							<input type="text" required autocomplete="off" id="username" name="username"
+								aria-required="true" />
 						</div>
 						<div class="field-wrap">
 							<label for="usernumber"> Phone Number<span class="req">*</span> </label>
-							<input type="tel" required autocomplete="off" id="usernumber" name="usernumber" />
+							<input type="tel" required autocomplete="off" id="usernumber" name="usernumber"
+								aria-required="true" maxlength="10" />
 						</div>
 					</div>
 					<div class="field-wrap">
 						<label for="useremail"> Email Address<span class="req">*</span> </label>
-						<input type="email" required autocomplete="off" id="useremail" name="useremail" />
+						<input type="email" required autocomplete="off" id="useremail" name="useremail"
+							aria-required="true" />
 					</div>
 					<div class="field-wrap">
 						<label for="userpassword"> Set A Password<span class="req">*</span> </label>
-						<input type="password" required autocomplete="off" id="userpassword" name="userpassword" />
+						<input type="password" required autocomplete="off" id="userpassword" name="userpassword"
+							aria-required="true" />
+						<img src="{{ url_for('static', filename='images/hide.png') }}" alt="" srcset=""
+							id="signuppassword" class="toggle-password">
 					</div>
 					<button type="submit" class="button button-block" id="submitbtn">
 						Sign Up
@@ -57,6 +63,8 @@
 						<label for="loginuserpassword"> Password<span class="req">*</span> </label>
 						<input type="password" name="loginuserpassword" required autocomplete="off"
 							id="loginuserpassword" />
+						<img src="{{ url_for('static', filename='images/hide.png') }}" alt="" srcset=""
+							id="loginpassword" class="toggle-password">
 					</div>
 					<p class="forgot"><a href="{{ url_for('forgot')}}" id="forgotPasswordLink">Forgot Password?</a></p>
 					<button type="submit" class="button button-block" id="loginButton">
@@ -68,7 +76,27 @@
 		</div>
 	</div>
 	<script>
-
+		document.querySelectorAll('.toggle-password').forEach(function (icon) {
+			icon.addEventListener('click', function () {
+				var userpassword = document.getElementById('userpassword')
+				var loginuserpassword = document.getElementById('loginuserpassword')
+				if (userpassword.type === 'password') {
+					userpassword.type = 'text'
+					icon.src = "{{ url_for('static', filename='images/view.png') }}"
+					// console.log('working')	
+				}
+				else if (loginuserpassword.type === 'password') {
+					loginuserpassword.type = 'text'
+					icon.src = "{{ url_for('static', filename='images/view.png') }}"
+				}
+				else {
+					userpassword.type = 'password'
+					loginuserpassword.type = 'password'
+					icon.src = "{{ url_for('static', filename='images/hide.png') }}"
+					// console.log('also working')
+				}
+			})
+		})
 	</script>
 </body>
 
