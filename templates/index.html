@@ -1,164 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <title>index</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='landing.css') }}"
-    />
-    <script defer>
-      function delay() {
-        let x = document.getElementById("animel");
-        if (x.classList.contains("anim-typewriter")) {
-          x.classList.remove("anim-typewriter");
-        } else {
-          x.classList.add("anim-typewriter");
-        }
+  <title>index</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}" />
+  <script defer>
+    function delay() {
+      let x = document.getElementById("animel");
+      if (x.classList.contains("anim-typewriter")) {
+        x.classList.remove("anim-typewriter");
+      } else {
+        x.classList.add("anim-typewriter");
       }
-      setInterval(delay, 4000);
-    </script>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-  </head>
+    }
+    setInterval(delay, 4000);
+  </script>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
 
-  <body>
-    <nav class="nav">
-      <a class="a-tag" href="/">
-        <img
-          src="{{ url_for('static', filename='YouTube-Icon-White-Logo.wine.svg')}}"
-          alt="Logo"
-          width="80"
-          height="45"
-        />
-        <span id="title"
-          >Video <span id="summary">Summarization </span>&
-          <span id="navi">Navigation </span>System</span
-        >
-      </a>
-      <div id="button">
-        <form action="/about">
-          <button type="submit" id="aboutbtn">About</button>
-        </form>
-        <form action="/login">
-          <button type="submit" id="signupbtn">SignUp</button>
-        </form>
-		<div id="loginUnSuccessMsg" class="alert alert-danger">
-			No such Data was Found!
-		</div>
-      </div>
-    </nav>
-    <section id="hero">
-      <h1 id="greeting">Hi, There!👋</h1>
-      <div id="typewrite-text">
-        <h1 class="line-1 anim-typewriter" id="animel">
-          We are, Your Guide to Navigating the Vast Ocean of YouTube Tutorials!
-        </h1>
-      </div>
-      <p>
-        Our Platform Transforms YouTube Tutorials into Navigable Resources,
-        Empowering Users to Effortlessly Find, Learn, and Explore Topics of
-        Interest. Join Us as We Redefine the Way You Engage with Online
-        Learning.
-      </p>
-    </section>
-    <section id="brief">
-      <h1>What is <span id="vsns">VSNS</span>?</h1>
-      <div id="bulb-line">
-        <a id="bulb" src="#"></a>
-        <h2>IF You have a Problem, Then we have a solution!!</h2>
-      </div>
-      <div class="about">
-        <div id="problems">
-          <div class="line">
-            <box-icon name="x" color="#ffffff"></box-icon>
-            <p>
-              Difficulty in finding specific information within lengthy YouTube
-              tutorials.
-            </p>
-          </div>
-          <div class="line">
-            <box-icon name="x" color="#ffffff"></box-icon>
-            <p>
-              Time-consuming process of sifting through entire videos to find
-              relevant information.
-            </p>
-          </div>
-          <div class="line">
-            <box-icon name="x" color="#ffffff"></box-icon>
-            <p>Lack of efficient navigation through subtopics within videos.</p>
-          </div>
-          <div class="line">
-            <box-icon name="x" color="#ffffff"></box-icon>
-            <p>
-              Overwhelming nature of lengthy tutorials, making it challenging to
-              grasp key concepts.
-            </p>
-          </div>
-        </div>
-        <div id="features">
-          <div class="line">
-            <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
-            <p>
-              Transcription technology converts spoken words into searchable
-              text, enabling users to easily locate desired content.
-            </p>
-          </div>
-          <div class="line">
-            <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
-            <p>
-              Keyword search functionality allows users to enter specific
-              keywords, with the platform pinpointing exact moments in the video
-              where those keywords are mentioned.
-            </p>
-          </div>
-          <div class="line">
-            <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
-            <p>
-              Timestamp-based navigation enables users to skip to specific
-              subtopics, saving time and effort.
-            </p>
-          </div>
-          <div class="line">
-            <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
-            <p>
-              Video summaries provide users with concise overviews of the main
-              points covered in the video, facilitating quicker comprehension
-              and review.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="last">
-      <form action="/login">
-        <button type="submit" id="try_now">Try Now!</button>
+<body>
+  <nav class="nav">
+    <a class="a-tag" href="/">
+      <img src="{{ url_for('static', filename='images/YouTube-Icon-White-Logo.wine.svg')}}" alt="Logo" width="80"
+        height="45" />
+      <span id="title">Video <span id="summary">Summarization </span>&
+        <span id="navi">Navigation </span>System</span>
+    </a>
+    <div id="button">
+      <form action="/about">
+        <button type="submit" id="aboutbtn">About</button>
       </form>
-    </section>
-    <script>
-	  let verified = "{{verified}}"
-      const features = document.querySelector("#features");
-      const bulb = document.querySelector("#bulb");
+      <form action="/login">
+        <button type="submit" id="signupbtn">SignUp</button>
+      </form>
+      <div id="loginUnSuccessMsg" class="alert alert-danger">
+        No such Data was Found!
+      </div>
+    </div>
+  </nav>
+  <section id="hero">
+    <h1 id="greeting">Hi, There!👋</h1>
+    <div id="typewrite-text">
+      <h1 class="line-1 anim-typewriter" id="animel">
+        We are, Your Guide to Navigating the Vast Ocean of YouTube Tutorials!
+      </h1>
+    </div>
+    <p>
+      Our Platform Transforms YouTube Tutorials into Navigable Resources,
+      Empowering Users to Effortlessly Find, Learn, and Explore Topics of
+      Interest. Join Us as We Redefine the Way You Engage with Online
+      Learning.
+    </p>
+  </section>
+  <section id="brief">
+    <h1>What is <span id="vsns">VSNS</span>?</h1>
+    <div id="bulb-line">
+      <a id="bulb" src="#"></a>
+      <h2>IF You have a Problem, Then we have a solution!!</h2>
+    </div>
+    <div class="about">
+      <div id="problems">
+        <div class="line">
+          <box-icon name="x" color="#ffffff"></box-icon>
+          <p>
+            Difficulty in finding specific information within lengthy YouTube
+            tutorials.
+          </p>
+        </div>
+        <div class="line">
+          <box-icon name="x" color="#ffffff"></box-icon>
+          <p>
+            Time-consuming process of sifting through entire videos to find
+            relevant information.
+          </p>
+        </div>
+        <div class="line">
+          <box-icon name="x" color="#ffffff"></box-icon>
+          <p>Lack of efficient navigation through subtopics within videos.</p>
+        </div>
+        <div class="line">
+          <box-icon name="x" color="#ffffff"></box-icon>
+          <p>
+            Overwhelming nature of lengthy tutorials, making it challenging to
+            grasp key concepts.
+          </p>
+        </div>
+      </div>
+      <div id="features">
+        <div class="line">
+          <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
+          <p>
+            Transcription technology converts spoken words into searchable
+            text, enabling users to easily locate desired content.
+          </p>
+        </div>
+        <div class="line">
+          <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
+          <p>
+            Keyword search functionality allows users to enter specific
+            keywords, with the platform pinpointing exact moments in the video
+            where those keywords are mentioned.
+          </p>
+        </div>
+        <div class="line">
+          <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
+          <p>
+            Timestamp-based navigation enables users to skip to specific
+            subtopics, saving time and effort.
+          </p>
+        </div>
+        <div class="line">
+          <box-icon name="check" animation="tada" color="#ffffff"></box-icon>
+          <p>
+            Video summaries provide users with concise overviews of the main
+            points covered in the video, facilitating quicker comprehension
+            and review.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="last">
+    <form action="/login">
+      <button type="submit" id="try_now">Try Now!</button>
+    </form>
+  </section>
+  <script>
+    let verified = "{{verified}}"
+    const features = document.querySelector("#features");
+    const bulb = document.querySelector("#bulb");
 
-      features.addEventListener("mouseover", () => {
-        bulb.style.background = "url(../static/icons8-bulb-on-48.png)";
-      });
+    features.addEventListener("mouseover", () => {
+      bulb.style.background = "url(../static/images/icons8-bulb-on-48.png)";
+    });
 
-      features.addEventListener("mouseout", () => {
-        bulb.style.background = "url(../static/icons8-bulb-off-48.png)";
-      });
+    features.addEventListener("mouseout", () => {
+      bulb.style.background = "url(../static/images/icons8-bulb-off-48.png)";
+    });
 
-      bulb.addEventListener("mouseout", () => {
-        bulb.style.background = "url(../static/icons8-bulb-off-48.png)";
-      });
+    bulb.addEventListener("mouseout", () => {
+      bulb.style.background = "url(../static/images/icons8-bulb-off-48.png)";
+    });
 
-      bulb.addEventListener("mouseover", () => {
-        bulb.style.background = "url(../static/icons8-bulb-on-48.png)";
-      });
+    bulb.addEventListener("mouseover", () => {
+      bulb.style.background = "url(../static/images/icons8-bulb-on-48.png)";
+    });
 
-	  let loginUnSuccessMsg = document.getElementById('loginUnSuccessMsg')    
+    let loginUnSuccessMsg = document.getElementById('loginUnSuccessMsg')
     if (verified == 'False') {
       setTimeout(() => {
         loginUnSuccessMsg.style.display = 'block';
@@ -166,9 +158,10 @@
           loginUnSuccessMsg.style.display = 'none';
         }, 3000); // Hide the message after 3 seconds
       }, 3000);
-    }else{
-		loginUnSuccessMsg.style.display = 'none';
-	}
-    </script>
-  </body>
+    } else {
+      loginUnSuccessMsg.style.display = 'none';
+    }
+  </script>
+</body>
+
 </html>
