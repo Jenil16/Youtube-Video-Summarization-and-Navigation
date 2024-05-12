@@ -13,31 +13,10 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lsa import LsaSummarizer
 import math
 import nltk
-# import smtplib
-# from email.mime.multipart import MIMEMultipart
-# from email.mime.text import MIMEText
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from email_validator import validate_email, EmailNotValidError
-
-# import mysql.connector
-# from mysql.connector import errorcode
-
-# __cnx = None
-# def get_connection():
-#     global __cnx
-#     if __cnx is None:
-#         try:
-#             __cnx = mysql.connector.connect(user='root', password='123456789',
-#                                             database='details',host='127.0.0.1')
-#         except mysql.connector.Error as err:
-#                 if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#                     print("Something is wrong with your user name or password")
-#                 elif err.errno == errorcode.ER_BAD_DB_ERROR:
-#                     print("Database does not exist")
-#                 else:
-#                     print(err)
-#                     __cnx.close()
-#     return __cnx
-# connection = get_connection()
 
 nltk.download('punkt')
 
@@ -65,23 +44,23 @@ transcript = None
 subtitles = None
 
 
-# #Setup Server config
-# server_host = "smtp.gmail.com"
-# server_port = 587
+#Setup Server config
+server_host = "smtp.gmail.com"
+server_port = 587
 
-# #Setup Gmail credentials
-# my_email = ""
-# my_password = ""
+#Setup Gmail credentials
+my_email = ""
+my_password = ""
 
-# #Sender and receiver email
-# sender = ""
-# receiver = None
+#Sender and receiver email
+sender = ""
+receiver = None
 
-# #Setup Subject and to,from
-# msg = MIMEMultipart()
-# msg['From'] = sender
-# msg['To'] = receiver
-# msg['Subject'] = "SignUp Successfull 😄"
+#Setup Subject and to,from
+msg = MIMEMultipart()
+msg['From'] = sender
+msg['To'] = receiver
+msg['Subject'] = "SignUp Successfull 😄"
 
 
 # All the routes are below here
@@ -146,21 +125,16 @@ def add_info():
         mysql.connection.commit()
         cur.close()
         # print('another time',validated_email)
-        # cursor = connection.cursor()
-        # query = ('INSERT INTO user_details_new(name,number,email,password) VALUES(%s,%s,%s,%s)')
-        # data = (username,number,validated_email,password)
-        # cursor.execute(query,data)
-        connection.commit()
-
+        
         signedup = True
         
-        # body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
-        # msg.attach(MIMEText(body,'plain'))
-        # with smtplib.SMTP(server_host,server_port) as server_connection:
-        #     server_connection.starttls()
-        #     server_connection.login(user=my_email,password=my_password)
-        #     text = msg.as_string()
-        #     server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
+        body = f"Hey {username} You are successfully signup \n Your Username is {username} \n  Your Number is {number} \n Your Password is {password}"
+        msg.attach(MIMEText(body,'plain'))
+        with smtplib.SMTP(server_host,server_port) as server_connection:
+            server_connection.starttls()
+            server_connection.login(user=my_email,password=my_password)
+            text = msg.as_string()
+            server_connection.sendmail(from_addr=sender,to_addrs=receiver,msg=text)
         return render_template('home.html', signedup = signedup,username=username)
 
 @app.route('/verify_info', methods=['GET','POST'])
@@ -183,15 +157,7 @@ def verify_info():
         data = cur.fetchone()
         cur.close()
 
-
-        # cursor = connection.cursor()
-        # query = ('SELECT * FROM user_details_new WHERE Email = %s AND Password = %s')
-        # data = (email,password)
-        # cursor.execute(query,data)
-        # data = cursor.fetchone()
-        # cursor.close()
-
-        print(data)
+        # print(data)
         if data:
             verified = True
             return render_template("home.html", verified = verified)
@@ -200,21 +166,18 @@ def verify_info():
 
 
 
-@app.route('/add_video', methods=['POST'])
+@app.route('/add_video', methods=['GET','POST'])
 def add_video():
     global video_url
     global video_id
     video_url = request.form['videoUrl']
     video_id = get_youtube_id(video_url)
-    video_title = get_video_title(video_url)
+    # video_title = get_video_title(video_url)
 
     if video_id:
-
+        print(video_id)
         vurl = "https://www.youtube.com/embed/" + video_id
         save_path = "./video_audio_files"
-        # video_title = get_video_title(video_url)
-        video_file_name = f"{video_id}.mp4"
-        # audio_file_name = f"{video_id}.wav"
 
         if file_exists_in_folder("./video_audio_files", video_id+".mp4"):
             return render_template('video_page.html', video_url = vurl)
@@ -237,13 +200,35 @@ def check_download_status():
     return jsonify({'onComplete': onComplete})
 
 
+@app.route('/back', methods=['GET', 'POST'])
+def back():
+    global output_text
+    global video_url
+    global time
+    global subtopic
+    global video_id
+    global onComplete
+    global transcript
+    global subtitles
+
+    output_text = None
+    video_url = None
+    time = 0
+    subtopic = None
+    video_id = None
+    onComplete = 0
+    transcript = None
+    subtitles = None
+
+    return render_template("home.html")
+
 @app.route('/translate', methods=['GET','POST'])
 def translate():
     # global video_url
     global output_text
     global video_id
     global transcript
- 
+
     if output_text is None:
         transcript = get_transcript(video_id)
         output_text = transcript.text
@@ -290,6 +275,10 @@ def subtopic_skip():
     f = open("./video_audio_files/"+video_id+".srt", "a")
     f.write(subtitles)
     f.close()
+
+    # print(subtitles)
+    # print(type(subtitles))
+    # print('-----------------------------------------')
     return render_template("subtopic_skip.html", time=time, video_id = video_id)
     
 
@@ -305,11 +294,16 @@ def video_skip():
     if subtitles is None:
         subtitles = parse_srt("./video_audio_files/"+video_id+".srt")
     
+    # print(subtitles)
+    # print(type(subtitles))
+
     subtopic = data['topic']
     timestamp = find_subtitle_containing_text(subtitles, subtopic)
+    # print(timestamp)
+    # print(type(timestamp))
     
     if timestamp is not None:
-        time = timestamp
+        time = parse_time(timestamp)
     else:
         print('Subtopic not found in subtitles')
 
@@ -318,26 +312,34 @@ def video_skip():
 
 @app.route('/next_timestamp', methods=['POST', 'GET'])
 def next_timestamp():
+    global subtitles
     global time
     global subtopic
-    global video_id
-
     current_timestamp = time
     
-    next_timestamp = None
-    for subtitle in subtitles:
-        if subtitle['start'] > current_timestamp and subtopic.lower() in ' '.join(subtitle['text']).lower():
-            next_timestamp = subtitle['start']
-            break
-
-    if next_timestamp is not None:
-        time = next_timestamp
+    # Split the subtitles into blocks
+    subtitle_blocks = subtitles.strip().split('\n\n')
+    
+    for block in subtitle_blocks:
+        lines = block.split('\n')
         
-    else:
-        print('No next timestamp found for the given subtopic.')
-
-    return jsonify({'next_time': time})
-
+        # Extract start time from the second line
+        start_time_line = lines[1]
+        start_time_str = start_time_line.split(' --> ')[0]
+        start_time = start_time_str.strip()
+        
+        # Extract text from the remaining lines
+        text = ' '.join(lines[2:])
+        start_time = parse_time(start_time)
+        # Check if subtopic is in the text and start time is greater than current time
+        if subtopic.lower() in text.lower() and start_time > current_timestamp:
+            time = start_time
+            # print(time)
+            return jsonify({'next_time': time})
+            # return start_time
+    
+    print('No next timestamp found for the given subtopic.')
+    return None
 
 # All the functions are below here
     
@@ -368,13 +370,6 @@ def download_video(url, save_path, video_id):
     stream.download(output_path=save_path, filename=file_name)
     print("Download completed.")
 
-#funtion is used to convert video to audio
-# def convert_video_to_audio(video_path, audio_path):
-#     video = mp.VideoFileClip(video_path)
-#     audio = video.audio
-#     audio.write_audiofile(audio_path)
-#     print("Conversion completed.")
-
 
 def get_transcript(video_id):
     aai.settings.api_key = "7e2a126b073a4d4da1312644f147ad47"
@@ -391,23 +386,9 @@ def summarize_text(text, num_sentences):
 
 
 def parse_srt(file_path):
-    subtitles = []
-    with open(file_path, 'r') as f:
-        lines = f.readlines()
-    current_subtitle = None
-    for line in lines:
-        if current_subtitle is None:
-            current_subtitle = {'index': int(line.strip())}
-        elif not line.strip():
-            subtitles.append(current_subtitle)
-            current_subtitle = None
-        elif '-->' in line:
-            start, end = line.strip().split('-->')
-            current_subtitle['start'] = parse_time(start.strip())
-            current_subtitle['end'] = parse_time(end.strip())
-        else:
-            current_subtitle.setdefault('text', []).append(line.strip())
-    return subtitles
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()    
+    return content
 
 
 def parse_time(time_str):
@@ -419,9 +400,23 @@ def parse_time(time_str):
 
 
 def find_subtitle_containing_text(subtitles, subtopic):
-    for subtitle in subtitles:
-        if subtopic.lower() in ' '.join(subtitle['text']).lower():
-            return subtitle['start']
+    subtitle_blocks = subtitles.strip().split('\n\n')  # Split into subtitle blocks
+    
+    for block in subtitle_blocks:
+        lines = block.split('\n')  # Split block into lines
+        
+        # Extract start time from the second line
+        start_time_line = lines[1]
+        start_time_str = start_time_line.split(' --> ')[0]
+        start_time = start_time_str.strip()
+        
+        # Extract text from the remaining lines
+        text = ' '.join(lines[2:])
+        
+        # Check if subtopic is in the text
+        if subtopic.lower() in text.lower():
+            return start_time
+    
     return None
 
 
