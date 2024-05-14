@@ -20,6 +20,12 @@
     setInterval(delay, 4000);
   </script>
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script>
+    window.addEventListener('unload', function(e) {
+        var data = JSON.stringify({ new_value: 'None' });
+        navigator.sendBeacon('/update_global_variable', data);
+    });
+</script>
 </head>
 
 <body>

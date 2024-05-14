@@ -222,6 +222,30 @@ def back():
 
     return render_template("home.html")
 
+
+@app.route('/update_global_variable', methods=['POST'])
+def update_global_variable():
+    global output_text
+    global video_url
+    global time
+    global subtopic
+    global video_id
+    global onComplete
+    global transcript
+    global subtitles
+    # new_value = request.data.decode('utf-8')
+    # global_variable = new_value
+    output_text = None
+    video_url = None
+    time = 0
+    subtopic = None
+    video_id = None
+    onComplete = 0
+    transcript = None
+    subtitles = None
+    return 'Global variable updated'
+
+
 @app.route('/translate', methods=['GET','POST'])
 def translate():
     # global video_url
