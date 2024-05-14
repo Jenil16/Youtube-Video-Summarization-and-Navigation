@@ -36,6 +36,9 @@
 		</div>
 	</nav>
 	<section id="videoframe">
+		<form class="backBtnForm" action="/back" method="post">
+			<button title="Back" class="backBtn" type="submit"><img src="{{ url_for('static', filename='back.svg')}}" alt=""></button>
+		</form>
 		<iframe src="{{video_url}}?autoplay=0&rel=0" frameborder="0" allowfullscreen title="videoFrame"></iframe>
 	</section>
 
@@ -61,9 +64,6 @@
 		</div>
 
 	</section>
-	<form action="/back" method="post">
-		<button type="submit">Back</button>
-	</form>
 </body>
 
 <script>
