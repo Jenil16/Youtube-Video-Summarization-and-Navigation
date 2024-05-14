@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 
 #Database configuration's
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = '152.58.63.97'
 app.config['MYSQL_USER'] = 'admin'           
 app.config['MYSQL_PASSWORD'] = 'admin'
 app.config['MYSQL_DB'] = 'vsns_db'
