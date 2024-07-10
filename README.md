@@ -1,4 +1,4 @@
-# Youtube-Video-Summarization-and-Navigation
+# Youtube-Video-Summarization-and-Navigation System (VSNS)
 
 Link : https://vsns.onrender.com
 
